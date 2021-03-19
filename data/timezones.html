@@ -1,0 +1,5981 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+<title>Timezones and their UTC-offsets</title>
+<!-- taken from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones 
+using 
+https://wikitable2csv.ggor.de/
+and
+https://www.convertcsv.com/csv-to-html.htm
+-->
+<Style>
+td:nth-child(1), td:nth-child(2), td:nth-child(4),td:nth-child(5), td:nth-child(8)  {
+  display: none
+}
+
+th:nth-child(1), th:nth-child(2), th:nth-child(4),th:nth-child(5), th:nth-child(8)  {
+  display: none
+}
+
+</Style>
+</head>
+<body>
+<h1>Timezones and their UTC-offsets</h1>
+<p>
+    Current as of march 2021.
+</p>
+<table class="table table-bordered table-hover table-condensed">
+<thead><tr><th title="Field #1">Country code</th>
+<th title="Field #2">Latitude, longitude ±DDMM(SS)±DDDMM(SS)</th>
+<th title="Field #3">TZ database name</th>
+<th title="Field #4">Portion of country covered</th>
+<th title="Field #5">Status</th>
+<th title="Field #6">UTC offset ±hh:mm</th>
+<th title="Field #7">UTC DST offset ±hh:mm</th>
+<th title="Field #8">Notes</th>
+</tr></thead>
+<tbody><tr>
+<td>CI</td>
+<td>+0519−00402</td>
+<td>Africa/Abidjan</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GH</td>
+<td>+0533−00013</td>
+<td>Africa/Accra</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>ET</td>
+<td>+0902+03842</td>
+<td>Africa/Addis_Ababa</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Africa/Nairobi</td>
+</tr>
+<tr>
+<td>DZ</td>
+<td>+3647+00303</td>
+<td>Africa/Algiers</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>ER</td>
+<td>+1520+03853</td>
+<td>Africa/Asmara</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Africa/Nairobi</td>
+</tr>
+<tr>
+<td>ER</td>
+<td>+1520+03853</td>
+<td>Africa/Asmera</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Africa/Nairobi</td>
+</tr>
+<tr>
+<td>ML</td>
+<td>+1239−00800</td>
+<td>Africa/Bamako</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Africa/Abidjan</td>
+</tr>
+<tr>
+<td>CF</td>
+<td>+0422+01835</td>
+<td>Africa/Bangui</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td>Link to Africa/Lagos</td>
+</tr>
+<tr>
+<td>GM</td>
+<td>+1328−01639</td>
+<td>Africa/Banjul</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Africa/Abidjan</td>
+</tr>
+<tr>
+<td>GW</td>
+<td>+1151−01535</td>
+<td>Africa/Bissau</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MW</td>
+<td>−1547+03500</td>
+<td>Africa/Blantyre</td>
+<td> </td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Maputo</td>
+</tr>
+<tr>
+<td>CG</td>
+<td>−0416+01517</td>
+<td>Africa/Brazzaville</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td>Link to Africa/Lagos</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>−0323+02922</td>
+<td>Africa/Bujumbura</td>
+<td> </td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Maputo</td>
+</tr>
+<tr>
+<td>EG</td>
+<td>+3003+03115</td>
+<td>Africa/Cairo</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MA</td>
+<td>+3339−00735</td>
+<td>Africa/Casablanca</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>ES</td>
+<td>+3553−00519</td>
+<td>Africa/Ceuta</td>
+<td>Ceuta, Melilla</td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GN</td>
+<td>+0931−01343</td>
+<td>Africa/Conakry</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Africa/Abidjan</td>
+</tr>
+<tr>
+<td>SN</td>
+<td>+1440−01726</td>
+<td>Africa/Dakar</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Africa/Abidjan</td>
+</tr>
+<tr>
+<td>TZ</td>
+<td>−0648+03917</td>
+<td>Africa/Dar_es_Salaam</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Africa/Nairobi</td>
+</tr>
+<tr>
+<td>DJ</td>
+<td>+1136+04309</td>
+<td>Africa/Djibouti</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Africa/Nairobi</td>
+</tr>
+<tr>
+<td>CM</td>
+<td>+0403+00942</td>
+<td>Africa/Douala</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td>Link to Africa/Lagos</td>
+</tr>
+<tr>
+<td>EH</td>
+<td>+2709−01312</td>
+<td>Africa/El_Aaiun</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SL</td>
+<td>+0830−01315</td>
+<td>Africa/Freetown</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Africa/Abidjan</td>
+</tr>
+<tr>
+<td>BW</td>
+<td>−2439+02555</td>
+<td>Africa/Gaborone</td>
+<td> </td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Maputo</td>
+</tr>
+<tr>
+<td>ZW</td>
+<td>−1750+03103</td>
+<td>Africa/Harare</td>
+<td> </td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Maputo</td>
+</tr>
+<tr>
+<td>ZA</td>
+<td>−2615+02800</td>
+<td>Africa/Johannesburg</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SS</td>
+<td>+0451+03137</td>
+<td>Africa/Juba</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>UG</td>
+<td>+0019+03225</td>
+<td>Africa/Kampala</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Africa/Nairobi</td>
+</tr>
+<tr>
+<td>SD</td>
+<td>+1536+03232</td>
+<td>Africa/Khartoum</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RW</td>
+<td>−0157+03004</td>
+<td>Africa/Kigali</td>
+<td> </td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Maputo</td>
+</tr>
+<tr>
+<td>CD</td>
+<td>−0418+01518</td>
+<td>Africa/Kinshasa</td>
+<td>Dem. Rep. of Congo (west)</td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td>Link to Africa/Lagos</td>
+</tr>
+<tr>
+<td>NG</td>
+<td>+0627+00324</td>
+<td>Africa/Lagos</td>
+<td>West Africa Time</td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GA</td>
+<td>+0023+00927</td>
+<td>Africa/Libreville</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td>Link to Africa/Lagos</td>
+</tr>
+<tr>
+<td>TG</td>
+<td>+0608+00113</td>
+<td>Africa/Lome</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Africa/Abidjan</td>
+</tr>
+<tr>
+<td>AO</td>
+<td>−0848+01314</td>
+<td>Africa/Luanda</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td>Link to Africa/Lagos</td>
+</tr>
+<tr>
+<td>CD</td>
+<td>−1140+02728</td>
+<td>Africa/Lubumbashi</td>
+<td>Dem. Rep. of Congo (east)</td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Maputo</td>
+</tr>
+<tr>
+<td>ZM</td>
+<td>−1525+02817</td>
+<td>Africa/Lusaka</td>
+<td> </td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Maputo</td>
+</tr>
+<tr>
+<td>GQ</td>
+<td>+0345+00847</td>
+<td>Africa/Malabo</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td>Link to Africa/Lagos</td>
+</tr>
+<tr>
+<td>MZ</td>
+<td>−2558+03235</td>
+<td>Africa/Maputo</td>
+<td>Central Africa Time</td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>LS</td>
+<td>−2928+02730</td>
+<td>Africa/Maseru</td>
+<td> </td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Johannesburg</td>
+</tr>
+<tr>
+<td>SZ</td>
+<td>−2618+03106</td>
+<td>Africa/Mbabane</td>
+<td> </td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Johannesburg</td>
+</tr>
+<tr>
+<td>SO</td>
+<td>+0204+04522</td>
+<td>Africa/Mogadishu</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Africa/Nairobi</td>
+</tr>
+<tr>
+<td>LR</td>
+<td>+0618−01047</td>
+<td>Africa/Monrovia</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KE</td>
+<td>−0117+03649</td>
+<td>Africa/Nairobi</td>
+<td> </td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TD</td>
+<td>+1207+01503</td>
+<td>Africa/Ndjamena</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>NE</td>
+<td>+1331+00207</td>
+<td>Africa/Niamey</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td>Link to Africa/Lagos</td>
+</tr>
+<tr>
+<td>MR</td>
+<td>+1806−01557</td>
+<td>Africa/Nouakchott</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Africa/Abidjan</td>
+</tr>
+<tr>
+<td>BF</td>
+<td>+1222−00131</td>
+<td>Africa/Ouagadougou</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Africa/Abidjan</td>
+</tr>
+<tr>
+<td>BJ</td>
+<td>+0629+00237</td>
+<td>Africa/Porto-Novo</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td>Link to Africa/Lagos</td>
+</tr>
+<tr>
+<td>ST</td>
+<td>+0020+00644</td>
+<td>Africa/Sao_Tome</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>ML</td>
+<td> </td>
+<td>Africa/Timbuktu</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Africa/Abidjan</td>
+</tr>
+<tr>
+<td>LY</td>
+<td>+3254+01311</td>
+<td>Africa/Tripoli</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TN</td>
+<td>+3648+01011</td>
+<td>Africa/Tunis</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>NA</td>
+<td>−2234+01706</td>
+<td>Africa/Windhoek</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+515248−1763929</td>
+<td>America/Adak</td>
+<td>Aleutian Islands</td>
+<td>Canonical</td>
+<td>−10:00</td>
+<td>−09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+611305−1495401</td>
+<td>America/Anchorage</td>
+<td>Alaska (most areas)</td>
+<td>Canonical</td>
+<td>−09:00</td>
+<td>−08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AI</td>
+<td>+1812−06304</td>
+<td>America/Anguilla</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>AG</td>
+<td>+1703−06148</td>
+<td>America/Antigua</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0712−04812</td>
+<td>America/Araguaina</td>
+<td>Tocantins</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−3436−05827</td>
+<td>America/Argentina/Buenos_Aires</td>
+<td>Buenos Aires (BA, CF)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−2828−06547</td>
+<td>America/Argentina/Catamarca</td>
+<td>Catamarca (CT); Chubut (CH)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td> </td>
+<td>America/Argentina/ComodRivadavia</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Link to America/Argentina/Catamarca</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−3124−06411</td>
+<td>America/Argentina/Cordoba</td>
+<td>Argentina (most areas: CB, CC, CN, ER, FM, MN, SE, SF)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−2411−06518</td>
+<td>America/Argentina/Jujuy</td>
+<td>Jujuy (JY)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−2926−06651</td>
+<td>America/Argentina/La_Rioja</td>
+<td>La Rioja (LR)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−3253−06849</td>
+<td>America/Argentina/Mendoza</td>
+<td>Mendoza (MZ)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−5138−06913</td>
+<td>America/Argentina/Rio_Gallegos</td>
+<td>Santa Cruz (SC)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−2447−06525</td>
+<td>America/Argentina/Salta</td>
+<td>Salta (SA, LP, NQ, RN)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−3132−06831</td>
+<td>America/Argentina/San_Juan</td>
+<td>San Juan (SJ)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−3319−06621</td>
+<td>America/Argentina/San_Luis</td>
+<td>San Luis (SL)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−2649−06513</td>
+<td>America/Argentina/Tucuman</td>
+<td>Tucumán (TM)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−5448−06818</td>
+<td>America/Argentina/Ushuaia</td>
+<td>Tierra del Fuego (TF)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AW</td>
+<td>+1230−06958</td>
+<td>America/Aruba</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Curacao</td>
+</tr>
+<tr>
+<td>PY</td>
+<td>−2516−05740</td>
+<td>America/Asuncion</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+484531−0913718</td>
+<td>America/Atikokan</td>
+<td>EST - ON (Atikokan); NU (Coral H)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>America/Atka</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−10:00</td>
+<td>−09:00</td>
+<td>Link to America/Adak</td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−1259−03831</td>
+<td>America/Bahia</td>
+<td>Bahia</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+2048−10515</td>
+<td>America/Bahia_Banderas</td>
+<td>Central Time - Bahía de Banderas</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BB</td>
+<td>+1306−05937</td>
+<td>America/Barbados</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0127−04829</td>
+<td>America/Belem</td>
+<td>Pará (east); Amapá</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BZ</td>
+<td>+1730−08812</td>
+<td>America/Belize</td>
+<td> </td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+5125−05707</td>
+<td>America/Blanc-Sablon</td>
+<td>AST - QC (Lower North Shore)</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td>+0249−06040</td>
+<td>America/Boa_Vista</td>
+<td>Roraima</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CO</td>
+<td>+0436−07405</td>
+<td>America/Bogota</td>
+<td> </td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+433649−1161209</td>
+<td>America/Boise</td>
+<td>Mountain - ID (south); OR (east)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−3436−05827</td>
+<td>America/Buenos_Aires</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Link to America/Argentina/Buenos_Aires</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+690650−1050310</td>
+<td>America/Cambridge_Bay</td>
+<td>Mountain - NU (west)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−2027−05437</td>
+<td>America/Campo_Grande</td>
+<td>Mato Grosso do Sul</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+2105−08646</td>
+<td>America/Cancun</td>
+<td>Eastern Standard Time - Quintana Roo</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>VE</td>
+<td>+1030−06656</td>
+<td>America/Caracas</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−2828−06547</td>
+<td>America/Catamarca</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Link to America/Argentina/Catamarca</td>
+</tr>
+<tr>
+<td>GF</td>
+<td>+0456−05220</td>
+<td>America/Cayenne</td>
+<td> </td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KY</td>
+<td>+1918−08123</td>
+<td>America/Cayman</td>
+<td> </td>
+<td>Alias</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td>Link to America/Panama</td>
+</tr>
+<tr>
+<td>US</td>
+<td>+415100−0873900</td>
+<td>America/Chicago</td>
+<td>Central (most areas)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+2838−10605</td>
+<td>America/Chihuahua</td>
+<td>Mountain Time - Chihuahua (most areas)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td> </td>
+<td>America/Coral_Harbour</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td>Link to America/Atikokan</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−3124−06411</td>
+<td>America/Cordoba</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Link to America/Argentina/Cordoba</td>
+</tr>
+<tr>
+<td>CR</td>
+<td>+0956−08405</td>
+<td>America/Costa_Rica</td>
+<td> </td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4906−11631</td>
+<td>America/Creston</td>
+<td>MST - BC (Creston)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−1535−05605</td>
+<td>America/Cuiaba</td>
+<td>Mato Grosso</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CW</td>
+<td>+1211−06900</td>
+<td>America/Curacao</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GL</td>
+<td>+7646−01840</td>
+<td>America/Danmarkshavn</td>
+<td>National Park (east coast)</td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+6404−13925</td>
+<td>America/Dawson</td>
+<td>MST - Yukon (west)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+5946−12014</td>
+<td>America/Dawson_Creek</td>
+<td>MST - BC (Dawson Cr, Ft St John)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+394421−1045903</td>
+<td>America/Denver</td>
+<td>Mountain (most areas)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+421953−0830245</td>
+<td>America/Detroit</td>
+<td>Eastern - MI (most areas)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>DM</td>
+<td>+1518−06124</td>
+<td>America/Dominica</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+5333−11328</td>
+<td>America/Edmonton</td>
+<td>Mountain - AB; BC (E); SK (W)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0640−06952</td>
+<td>America/Eirunepe</td>
+<td>Amazonas (west)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SV</td>
+<td>+1342−08912</td>
+<td>America/El_Salvador</td>
+<td> </td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td> </td>
+<td>America/Ensenada</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−08:00</td>
+<td>−07:00</td>
+<td>Link to America/Tijuana</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+5848−12242</td>
+<td>America/Fort_Nelson</td>
+<td>MST - BC (Ft Nelson)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>America/Fort_Wayne</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td>Link to America/Indiana/Indianapolis</td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0343−03830</td>
+<td>America/Fortaleza</td>
+<td>Brazil (northeast: MA, PI, CE, RN, PB)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4612−05957</td>
+<td>America/Glace_Bay</td>
+<td>Atlantic - NS (Cape Breton)</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GL</td>
+<td>+6411−05144</td>
+<td>America/Godthab</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−03:00</td>
+<td>−02:00</td>
+<td>Link to America/Nuuk</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+5320−06025</td>
+<td>America/Goose_Bay</td>
+<td>Atlantic - Labrador (most areas)</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TC</td>
+<td>+2128−07108</td>
+<td>America/Grand_Turk</td>
+<td> </td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GD</td>
+<td>+1203−06145</td>
+<td>America/Grenada</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>GP</td>
+<td>+1614−06132</td>
+<td>America/Guadeloupe</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>GT</td>
+<td>+1438−09031</td>
+<td>America/Guatemala</td>
+<td> </td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>EC</td>
+<td>−0210−07950</td>
+<td>America/Guayaquil</td>
+<td>Ecuador (mainland)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GY</td>
+<td>+0648−05810</td>
+<td>America/Guyana</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4439−06336</td>
+<td>America/Halifax</td>
+<td>Atlantic - NS (most areas); PE</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CU</td>
+<td>+2308−08222</td>
+<td>America/Havana</td>
+<td> </td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+2904−11058</td>
+<td>America/Hermosillo</td>
+<td>Mountain Standard Time - Sonora</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+394606−0860929</td>
+<td>America/Indiana/Indianapolis</td>
+<td>Eastern - IN (most areas)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+411745−0863730</td>
+<td>America/Indiana/Knox</td>
+<td>Central - IN (Starke)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+382232−0862041</td>
+<td>America/Indiana/Marengo</td>
+<td>Eastern - IN (Crawford)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+382931−0871643</td>
+<td>America/Indiana/Petersburg</td>
+<td>Eastern - IN (Pike)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+375711−0864541</td>
+<td>America/Indiana/Tell_City</td>
+<td>Central - IN (Perry)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+384452−0850402</td>
+<td>America/Indiana/Vevay</td>
+<td>Eastern - IN (Switzerland)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+384038−0873143</td>
+<td>America/Indiana/Vincennes</td>
+<td>Eastern - IN (Da, Du, K, Mn)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+410305−0863611</td>
+<td>America/Indiana/Winamac</td>
+<td>Eastern - IN (Pulaski)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+394606−0860929</td>
+<td>America/Indianapolis</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td>Link to America/Indiana/Indianapolis</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+682059−1334300</td>
+<td>America/Inuvik</td>
+<td>Mountain - NT (west)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+6344−06828</td>
+<td>America/Iqaluit</td>
+<td>Eastern - NU (most east areas)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>JM</td>
+<td>+175805−0764736</td>
+<td>America/Jamaica</td>
+<td> </td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−2411−06518</td>
+<td>America/Jujuy</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Link to America/Argentina/Jujuy</td>
+</tr>
+<tr>
+<td>US</td>
+<td>+581807−1342511</td>
+<td>America/Juneau</td>
+<td>Alaska - Juneau area</td>
+<td>Canonical</td>
+<td>−09:00</td>
+<td>−08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+381515−0854534</td>
+<td>America/Kentucky/Louisville</td>
+<td>Eastern - KY (Louisville area)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+364947−0845057</td>
+<td>America/Kentucky/Monticello</td>
+<td>Eastern - KY (Wayne)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+411745−0863730</td>
+<td>America/Knox_IN</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td>Link to America/Indiana/Knox</td>
+</tr>
+<tr>
+<td>BQ</td>
+<td>+120903−0681636</td>
+<td>America/Kralendijk</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Curacao</td>
+</tr>
+<tr>
+<td>BO</td>
+<td>−1630−06809</td>
+<td>America/La_Paz</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PE</td>
+<td>−1203−07703</td>
+<td>America/Lima</td>
+<td> </td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+340308−1181434</td>
+<td>America/Los_Angeles</td>
+<td>Pacific</td>
+<td>Canonical</td>
+<td>−08:00</td>
+<td>−07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+381515−0854534</td>
+<td>America/Louisville</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td>Link to America/Kentucky/Louisville</td>
+</tr>
+<tr>
+<td>SX</td>
+<td>+180305−0630250</td>
+<td>America/Lower_Princes</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Curacao</td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0940−03543</td>
+<td>America/Maceio</td>
+<td>Alagoas, Sergipe</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>NI</td>
+<td>+1209−08617</td>
+<td>America/Managua</td>
+<td> </td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0308−06001</td>
+<td>America/Manaus</td>
+<td>Amazonas (east)</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MF</td>
+<td>+1804−06305</td>
+<td>America/Marigot</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>MQ</td>
+<td>+1436−06105</td>
+<td>America/Martinique</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+2550−09730</td>
+<td>America/Matamoros</td>
+<td>Central Time US - Coahuila, Nuevo León, Tamaulipas (US border)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+2313−10625</td>
+<td>America/Mazatlan</td>
+<td>Mountain Time - Baja California Sur, Nayarit, Sinaloa</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td>−3253−06849</td>
+<td>America/Mendoza</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Link to America/Argentina/Mendoza</td>
+</tr>
+<tr>
+<td>US</td>
+<td>+450628−0873651</td>
+<td>America/Menominee</td>
+<td>Central - MI (Wisconsin border)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+2058−08937</td>
+<td>America/Merida</td>
+<td>Central Time - Campeche, Yucatán</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+550737−1313435</td>
+<td>America/Metlakatla</td>
+<td>Alaska - Annette Island</td>
+<td>Canonical</td>
+<td>−09:00</td>
+<td>−08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+1924−09909</td>
+<td>America/Mexico_City</td>
+<td>Central Time</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PM</td>
+<td>+4703−05620</td>
+<td>America/Miquelon</td>
+<td> </td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4606−06447</td>
+<td>America/Moncton</td>
+<td>Atlantic - New Brunswick</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+2540−10019</td>
+<td>America/Monterrey</td>
+<td>Central Time - Durango; Coahuila, Nuevo León, Tamaulipas (most areas)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>UY</td>
+<td>−345433−0561245</td>
+<td>America/Montevideo</td>
+<td> </td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td> </td>
+<td>America/Montreal</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td>Link to America/Toronto</td>
+</tr>
+<tr>
+<td>MS</td>
+<td>+1643−06213</td>
+<td>America/Montserrat</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>BS</td>
+<td>+2505−07721</td>
+<td>America/Nassau</td>
+<td> </td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+404251−0740023</td>
+<td>America/New_York</td>
+<td>Eastern (most areas)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4901−08816</td>
+<td>America/Nipigon</td>
+<td>Eastern - ON, QC (no DST 1967-73)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+643004−1652423</td>
+<td>America/Nome</td>
+<td>Alaska (west)</td>
+<td>Canonical</td>
+<td>−09:00</td>
+<td>−08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0351−03225</td>
+<td>America/Noronha</td>
+<td>Atlantic islands</td>
+<td>Canonical</td>
+<td>−02:00</td>
+<td>−02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+471551−1014640</td>
+<td>America/North_Dakota/Beulah</td>
+<td>Central - ND (Mercer)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+470659−1011757</td>
+<td>America/North_Dakota/Center</td>
+<td>Central - ND (Oliver)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+465042−1012439</td>
+<td>America/North_Dakota/New_Salem</td>
+<td>Central - ND (Morton rural)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GL</td>
+<td>+6411−05144</td>
+<td>America/Nuuk</td>
+<td>Greenland (most areas)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+2934−10425</td>
+<td>America/Ojinaga</td>
+<td>Mountain Time US - Chihuahua (US border)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PA</td>
+<td>+0858−07932</td>
+<td>America/Panama</td>
+<td> </td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+6608−06544</td>
+<td>America/Pangnirtung</td>
+<td>Eastern - NU (Pangnirtung)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SR</td>
+<td>+0550−05510</td>
+<td>America/Paramaribo</td>
+<td> </td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+332654−1120424</td>
+<td>America/Phoenix</td>
+<td>MST - Arizona (except Navajo)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>HT</td>
+<td>+1832−07220</td>
+<td>America/Port-au-Prince</td>
+<td> </td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TT</td>
+<td>+1039−06131</td>
+<td>America/Port_of_Spain</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td> </td>
+<td>America/Porto_Acre</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td>Link to America/Rio_Branco</td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0846−06354</td>
+<td>America/Porto_Velho</td>
+<td>Rondônia</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PR</td>
+<td>+182806−0660622</td>
+<td>America/Puerto_Rico</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CL</td>
+<td>−5309−07055</td>
+<td>America/Punta_Arenas</td>
+<td>Region of Magallanes</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Magallanes Region</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4843−09434</td>
+<td>America/Rainy_River</td>
+<td>Central - ON (Rainy R, Ft Frances)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+624900−0920459</td>
+<td>America/Rankin_Inlet</td>
+<td>Central - NU (central)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0803−03454</td>
+<td>America/Recife</td>
+<td>Pernambuco</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+5024−10439</td>
+<td>America/Regina</td>
+<td>CST - SK (most areas)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+744144−0944945</td>
+<td>America/Resolute</td>
+<td>Central - NU (Resolute)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0958−06748</td>
+<td>America/Rio_Branco</td>
+<td>Acre</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AR</td>
+<td> </td>
+<td>America/Rosario</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Link to America/Argentina/Cordoba</td>
+</tr>
+<tr>
+<td>MX</td>
+<td> </td>
+<td>America/Santa_Isabel</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−08:00</td>
+<td>−07:00</td>
+<td>Link to America/Tijuana</td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−0226−05452</td>
+<td>America/Santarem</td>
+<td>Pará (west)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CL</td>
+<td>−3327−07040</td>
+<td>America/Santiago</td>
+<td>Chile (most areas)</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>DO</td>
+<td>+1828−06954</td>
+<td>America/Santo_Domingo</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BR</td>
+<td>−2332−04637</td>
+<td>America/Sao_Paulo</td>
+<td>Brazil (southeast: GO, DF, MG, ES, RJ, SP, PR, SC, RS)</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GL</td>
+<td>+7029−02158</td>
+<td>America/Scoresbysund</td>
+<td>Scoresbysund/Ittoqqortoormiit</td>
+<td>Canonical</td>
+<td>−01:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>America/Shiprock</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td>Link to America/Denver</td>
+</tr>
+<tr>
+<td>US</td>
+<td>+571035−1351807</td>
+<td>America/Sitka</td>
+<td>Alaska - Sitka area</td>
+<td>Canonical</td>
+<td>−09:00</td>
+<td>−08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BL</td>
+<td>+1753−06251</td>
+<td>America/St_Barthelemy</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4734−05243</td>
+<td>America/St_Johns</td>
+<td>Newfoundland; Labrador (southeast)</td>
+<td>Canonical</td>
+<td>−03:30</td>
+<td>−02:30</td>
+<td> </td>
+</tr>
+<tr>
+<td>KN</td>
+<td>+1718−06243</td>
+<td>America/St_Kitts</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>LC</td>
+<td>+1401−06100</td>
+<td>America/St_Lucia</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>VI</td>
+<td>+1821−06456</td>
+<td>America/St_Thomas</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>VC</td>
+<td>+1309−06114</td>
+<td>America/St_Vincent</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+5017−10750</td>
+<td>America/Swift_Current</td>
+<td>CST - SK (midwest)</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>HN</td>
+<td>+1406−08713</td>
+<td>America/Tegucigalpa</td>
+<td> </td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GL</td>
+<td>+7634−06847</td>
+<td>America/Thule</td>
+<td>Thule/Pituffik</td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4823−08915</td>
+<td>America/Thunder_Bay</td>
+<td>Eastern - ON (Thunder Bay)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MX</td>
+<td>+3232−11701</td>
+<td>America/Tijuana</td>
+<td>Pacific Time US - Baja California</td>
+<td>Canonical</td>
+<td>−08:00</td>
+<td>−07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4339−07923</td>
+<td>America/Toronto</td>
+<td>Eastern - ON, QC (most areas)</td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>VG</td>
+<td>+1827−06437</td>
+<td>America/Tortola</td>
+<td> </td>
+<td>Alias</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4916−12307</td>
+<td>America/Vancouver</td>
+<td>Pacific - BC (most areas)</td>
+<td>Canonical</td>
+<td>−08:00</td>
+<td>−07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>VI</td>
+<td> </td>
+<td>America/Virgin</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+6043−13503</td>
+<td>America/Whitehorse</td>
+<td>MST - Yukon (east)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+4953−09709</td>
+<td>America/Winnipeg</td>
+<td>Central - ON (west); Manitoba</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+593249−1394338</td>
+<td>America/Yakutat</td>
+<td>Alaska - Yakutat</td>
+<td>Canonical</td>
+<td>−09:00</td>
+<td>−08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CA</td>
+<td>+6227−11421</td>
+<td>America/Yellowknife</td>
+<td>Mountain - NT (central)</td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AQ</td>
+<td>−6617+11031</td>
+<td>Antarctica/Casey</td>
+<td>Casey</td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AQ</td>
+<td>−6835+07758</td>
+<td>Antarctica/Davis</td>
+<td>Davis</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AQ</td>
+<td>−6640+14001</td>
+<td>Antarctica/DumontDUrville</td>
+<td>Dumont-d&#39;Urville</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−5430+15857</td>
+<td>Antarctica/Macquarie</td>
+<td>Macquarie Island</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AQ</td>
+<td>−6736+06253</td>
+<td>Antarctica/Mawson</td>
+<td>Mawson</td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AQ</td>
+<td>−7750+16636</td>
+<td>Antarctica/McMurdo</td>
+<td>New Zealand time - McMurdo, South Pole</td>
+<td>Alias</td>
+<td>+12:00</td>
+<td>+13:00</td>
+<td>Link to Pacific/Auckland</td>
+</tr>
+<tr>
+<td>AQ</td>
+<td>−6448−06406</td>
+<td>Antarctica/Palmer</td>
+<td>Palmer</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Chilean Antarctica Region</td>
+</tr>
+<tr>
+<td>AQ</td>
+<td>−6734−06808</td>
+<td>Antarctica/Rothera</td>
+<td>Rothera</td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AQ</td>
+<td> </td>
+<td>Antarctica/South_Pole</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+12:00</td>
+<td>+13:00</td>
+<td>Link to Pacific/Auckland</td>
+</tr>
+<tr>
+<td>AQ</td>
+<td>−690022+0393524</td>
+<td>Antarctica/Syowa</td>
+<td>Syowa</td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AQ</td>
+<td>−720041+0023206</td>
+<td>Antarctica/Troll</td>
+<td>Troll</td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+02:00</td>
+<td>Previously used +01:00 for a brief period between standard and daylight time.[2]</td>
+</tr>
+<tr>
+<td>AQ</td>
+<td>−7824+10654</td>
+<td>Antarctica/Vostok</td>
+<td>Vostok</td>
+<td>Canonical</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SJ</td>
+<td>+7800+01600</td>
+<td>Arctic/Longyearbyen</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Oslo</td>
+</tr>
+<tr>
+<td>YE</td>
+<td>+1245+04512</td>
+<td>Asia/Aden</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Asia/Riyadh</td>
+</tr>
+<tr>
+<td>KZ</td>
+<td>+4315+07657</td>
+<td>Asia/Almaty</td>
+<td>Kazakhstan (most areas)</td>
+<td>Canonical</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>JO</td>
+<td>+3157+03556</td>
+<td>Asia/Amman</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+6445+17729</td>
+<td>Asia/Anadyr</td>
+<td>MSK+09 - Bering Sea</td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KZ</td>
+<td>+4431+05016</td>
+<td>Asia/Aqtau</td>
+<td>Mangghystaū/Mankistau</td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KZ</td>
+<td>+5017+05710</td>
+<td>Asia/Aqtobe</td>
+<td>Aqtöbe/Aktobe</td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TM</td>
+<td>+3757+05823</td>
+<td>Asia/Ashgabat</td>
+<td> </td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TM</td>
+<td>+3757+05823</td>
+<td>Asia/Ashkhabad</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td>Link to Asia/Ashgabat</td>
+</tr>
+<tr>
+<td>KZ</td>
+<td>+4707+05156</td>
+<td>Asia/Atyrau</td>
+<td>Atyraū/Atirau/Gur&#39;yev</td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>IQ</td>
+<td>+3321+04425</td>
+<td>Asia/Baghdad</td>
+<td> </td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BH</td>
+<td>+2623+05035</td>
+<td>Asia/Bahrain</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Asia/Qatar</td>
+</tr>
+<tr>
+<td>AZ</td>
+<td>+4023+04951</td>
+<td>Asia/Baku</td>
+<td> </td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TH</td>
+<td>+1345+10031</td>
+<td>Asia/Bangkok</td>
+<td>Indochina (most areas)</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5322+08345</td>
+<td>Asia/Barnaul</td>
+<td>MSK+04 - Altai</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>LB</td>
+<td>+3353+03530</td>
+<td>Asia/Beirut</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KG</td>
+<td>+4254+07436</td>
+<td>Asia/Bishkek</td>
+<td> </td>
+<td>Canonical</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BN</td>
+<td>+0456+11455</td>
+<td>Asia/Brunei</td>
+<td> </td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>IN</td>
+<td>+2232+08822</td>
+<td>Asia/Calcutta</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+05:30</td>
+<td>+05:30</td>
+<td>Link to Asia/Kolkata</td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5203+11328</td>
+<td>Asia/Chita</td>
+<td>MSK+06 - Zabaykalsky</td>
+<td>Canonical</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MN</td>
+<td>+4804+11430</td>
+<td>Asia/Choibalsan</td>
+<td>Dornod, Sükhbaatar</td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CN</td>
+<td> </td>
+<td>Asia/Chongqing</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Asia/Shanghai</td>
+</tr>
+<tr>
+<td>CN</td>
+<td> </td>
+<td>Asia/Chungking</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Asia/Shanghai</td>
+</tr>
+<tr>
+<td>LK</td>
+<td>+0656+07951</td>
+<td>Asia/Colombo</td>
+<td> </td>
+<td>Canonical</td>
+<td>+05:30</td>
+<td>+05:30</td>
+<td> </td>
+</tr>
+<tr>
+<td>BD</td>
+<td>+2343+09025</td>
+<td>Asia/Dacca</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td>Link to Asia/Dhaka</td>
+</tr>
+<tr>
+<td>SY</td>
+<td>+3330+03618</td>
+<td>Asia/Damascus</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BD</td>
+<td>+2343+09025</td>
+<td>Asia/Dhaka</td>
+<td> </td>
+<td>Canonical</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TL</td>
+<td>−0833+12535</td>
+<td>Asia/Dili</td>
+<td> </td>
+<td>Canonical</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AE</td>
+<td>+2518+05518</td>
+<td>Asia/Dubai</td>
+<td> </td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TJ</td>
+<td>+3835+06848</td>
+<td>Asia/Dushanbe</td>
+<td> </td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CY</td>
+<td>+3507+03357</td>
+<td>Asia/Famagusta</td>
+<td>Northern Cyprus</td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PS</td>
+<td>+3130+03428</td>
+<td>Asia/Gaza</td>
+<td>Gaza Strip</td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CN</td>
+<td> </td>
+<td>Asia/Harbin</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Asia/Shanghai</td>
+</tr>
+<tr>
+<td>PS</td>
+<td>+313200+0350542</td>
+<td>Asia/Hebron</td>
+<td>West Bank</td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>VN</td>
+<td>+1045+10640</td>
+<td>Asia/Ho_Chi_Minh</td>
+<td>Vietnam (south)</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>HK</td>
+<td>+2217+11409</td>
+<td>Asia/Hong_Kong</td>
+<td> </td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MN</td>
+<td>+4801+09139</td>
+<td>Asia/Hovd</td>
+<td>Bayan-Ölgii, Govi-Altai, Hovd, Uvs, Zavkhan</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5216+10420</td>
+<td>Asia/Irkutsk</td>
+<td>MSK+05 - Irkutsk, Buryatia</td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TR</td>
+<td>+4101+02858</td>
+<td>Asia/Istanbul</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Europe/Istanbul</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>−0610+10648</td>
+<td>Asia/Jakarta</td>
+<td>Java, Sumatra</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>ID</td>
+<td>−0232+14042</td>
+<td>Asia/Jayapura</td>
+<td>New Guinea (West Papua / Irian Jaya); Malukus/Moluccas</td>
+<td>Canonical</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>IL</td>
+<td>+314650+0351326</td>
+<td>Asia/Jerusalem</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AF</td>
+<td>+3431+06912</td>
+<td>Asia/Kabul</td>
+<td> </td>
+<td>Canonical</td>
+<td>+04:30</td>
+<td>+04:30</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5301+15839</td>
+<td>Asia/Kamchatka</td>
+<td>MSK+09 - Kamchatka</td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PK</td>
+<td>+2452+06703</td>
+<td>Asia/Karachi</td>
+<td> </td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CN</td>
+<td> </td>
+<td>Asia/Kashgar</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td>Link to Asia/Urumqi[note 1]</td>
+</tr>
+<tr>
+<td>NP</td>
+<td>+2743+08519</td>
+<td>Asia/Kathmandu</td>
+<td> </td>
+<td>Canonical</td>
+<td>+05:45</td>
+<td>+05:45</td>
+<td> </td>
+</tr>
+<tr>
+<td>NP</td>
+<td>+2743+08519</td>
+<td>Asia/Katmandu</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+05:45</td>
+<td>+05:45</td>
+<td>Link to Asia/Kathmandu</td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+623923+1353314</td>
+<td>Asia/Khandyga</td>
+<td>MSK+06 - Tomponsky, Ust-Maysky</td>
+<td>Canonical</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>IN</td>
+<td>+2232+08822</td>
+<td>Asia/Kolkata</td>
+<td> </td>
+<td>Canonical</td>
+<td>+05:30</td>
+<td>+05:30</td>
+<td>Note: Different zones in history, see Time in India.</td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5601+09250</td>
+<td>Asia/Krasnoyarsk</td>
+<td>MSK+04 - Krasnoyarsk area</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MY</td>
+<td>+0310+10142</td>
+<td>Asia/Kuala_Lumpur</td>
+<td>Malaysia (peninsula)</td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MY</td>
+<td>+0133+11020</td>
+<td>Asia/Kuching</td>
+<td>Sabah, Sarawak</td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KW</td>
+<td>+2920+04759</td>
+<td>Asia/Kuwait</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Asia/Riyadh</td>
+</tr>
+<tr>
+<td>MO</td>
+<td>+221150+1133230</td>
+<td>Asia/Macao</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Asia/Macau</td>
+</tr>
+<tr>
+<td>MO</td>
+<td>+221150+1133230</td>
+<td>Asia/Macau</td>
+<td> </td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5934+15048</td>
+<td>Asia/Magadan</td>
+<td>MSK+08 - Magadan</td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>ID</td>
+<td>−0507+11924</td>
+<td>Asia/Makassar</td>
+<td>Borneo (east, south); Sulawesi/Celebes, Bali, Nusa Tengarra; Timor (west)</td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PH</td>
+<td>+1435+12100</td>
+<td>Asia/Manila</td>
+<td> </td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>OM</td>
+<td>+2336+05835</td>
+<td>Asia/Muscat</td>
+<td> </td>
+<td>Alias</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td>Link to Asia/Dubai</td>
+</tr>
+<tr>
+<td>CY</td>
+<td>+3510+03322</td>
+<td>Asia/Nicosia</td>
+<td>Cyprus (most areas)</td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5345+08707</td>
+<td>Asia/Novokuznetsk</td>
+<td>MSK+04 - Kemerovo</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5502+08255</td>
+<td>Asia/Novosibirsk</td>
+<td>MSK+04 - Novosibirsk</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5500+07324</td>
+<td>Asia/Omsk</td>
+<td>MSK+03 - Omsk</td>
+<td>Canonical</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KZ</td>
+<td>+5113+05121</td>
+<td>Asia/Oral</td>
+<td>West Kazakhstan</td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KH</td>
+<td>+1133+10455</td>
+<td>Asia/Phnom_Penh</td>
+<td> </td>
+<td>Alias</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td>Link to Asia/Bangkok</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>−0002+10920</td>
+<td>Asia/Pontianak</td>
+<td>Borneo (west, central)</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KP</td>
+<td>+3901+12545</td>
+<td>Asia/Pyongyang</td>
+<td> </td>
+<td>Canonical</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>QA</td>
+<td>+2517+05132</td>
+<td>Asia/Qatar</td>
+<td> </td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KZ</td>
+<td>+5312+06337</td>
+<td>Asia/Qostanay</td>
+<td>Qostanay/Kostanay/Kustanay</td>
+<td>Canonical</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KZ</td>
+<td>+4448+06528</td>
+<td>Asia/Qyzylorda</td>
+<td>Qyzylorda/Kyzylorda/Kzyl-Orda</td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MM</td>
+<td> </td>
+<td>Asia/Rangoon</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+06:30</td>
+<td>+06:30</td>
+<td>Link to Asia/Yangon</td>
+</tr>
+<tr>
+<td>SA</td>
+<td>+2438+04643</td>
+<td>Asia/Riyadh</td>
+<td> </td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>VN</td>
+<td> </td>
+<td>Asia/Saigon</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td>Link to Asia/Ho_Chi_Minh</td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+4658+14242</td>
+<td>Asia/Sakhalin</td>
+<td>MSK+08 - Sakhalin Island</td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>UZ</td>
+<td>+3940+06648</td>
+<td>Asia/Samarkand</td>
+<td>Uzbekistan (west)</td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KR</td>
+<td>+3733+12658</td>
+<td>Asia/Seoul</td>
+<td> </td>
+<td>Canonical</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CN</td>
+<td>+3114+12128</td>
+<td>Asia/Shanghai</td>
+<td>Beijing Time</td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SG</td>
+<td>+0117+10351</td>
+<td>Asia/Singapore</td>
+<td> </td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+6728+15343</td>
+<td>Asia/Srednekolymsk</td>
+<td>MSK+08 - Sakha (E); North Kuril Is</td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TW</td>
+<td>+2503+12130</td>
+<td>Asia/Taipei</td>
+<td> </td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>UZ</td>
+<td>+4120+06918</td>
+<td>Asia/Tashkent</td>
+<td>Uzbekistan (east)</td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GE</td>
+<td>+4143+04449</td>
+<td>Asia/Tbilisi</td>
+<td> </td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>IR</td>
+<td>+3540+05126</td>
+<td>Asia/Tehran</td>
+<td> </td>
+<td>Canonical</td>
+<td>+03:30</td>
+<td>+04:30</td>
+<td> </td>
+</tr>
+<tr>
+<td>IL</td>
+<td> </td>
+<td>Asia/Tel_Aviv</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td>Link to Asia/Jerusalem</td>
+</tr>
+<tr>
+<td>BT</td>
+<td>+2728+08939</td>
+<td>Asia/Thimbu</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td>Link to Asia/Thimphu</td>
+</tr>
+<tr>
+<td>BT</td>
+<td>+2728+08939</td>
+<td>Asia/Thimphu</td>
+<td> </td>
+<td>Canonical</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>JP</td>
+<td>+353916+1394441</td>
+<td>Asia/Tokyo</td>
+<td> </td>
+<td>Canonical</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5630+08458</td>
+<td>Asia/Tomsk</td>
+<td>MSK+04 - Tomsk</td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>ID</td>
+<td> </td>
+<td>Asia/Ujung_Pandang</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Asia/Makassar</td>
+</tr>
+<tr>
+<td>MN</td>
+<td>+4755+10653</td>
+<td>Asia/Ulaanbaatar</td>
+<td>Mongolia (most areas)</td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MN</td>
+<td> </td>
+<td>Asia/Ulan_Bator</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Asia/Ulaanbaatar</td>
+</tr>
+<tr>
+<td>CN</td>
+<td>+4348+08735</td>
+<td>Asia/Urumqi</td>
+<td>Xinjiang Time</td>
+<td>Canonical</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td>The Asia/Urumqi entry in the tz database reflected the use of Xinjiang Time by part of the local population. Consider using Asia/Shanghai for Beijing Time if that is preferred.</td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+643337+1431336</td>
+<td>Asia/Ust-Nera</td>
+<td>MSK+07 - Oymyakonsky</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>LA</td>
+<td>+1758+10236</td>
+<td>Asia/Vientiane</td>
+<td> </td>
+<td>Alias</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td>Link to Asia/Bangkok</td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+4310+13156</td>
+<td>Asia/Vladivostok</td>
+<td>MSK+07 - Amur River</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+6200+12940</td>
+<td>Asia/Yakutsk</td>
+<td>MSK+06 - Lena River</td>
+<td>Canonical</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MM</td>
+<td>+1647+09610</td>
+<td>Asia/Yangon</td>
+<td> </td>
+<td>Canonical</td>
+<td>+06:30</td>
+<td>+06:30</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5651+06036</td>
+<td>Asia/Yekaterinburg</td>
+<td>MSK+02 - Urals</td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AM</td>
+<td>+4011+04430</td>
+<td>Asia/Yerevan</td>
+<td> </td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PT</td>
+<td>+3744−02540</td>
+<td>Atlantic/Azores</td>
+<td>Azores</td>
+<td>Canonical</td>
+<td>−01:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>BM</td>
+<td>+3217−06446</td>
+<td>Atlantic/Bermuda</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>ES</td>
+<td>+2806−01524</td>
+<td>Atlantic/Canary</td>
+<td>Canary Islands</td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CV</td>
+<td>+1455−02331</td>
+<td>Atlantic/Cape_Verde</td>
+<td> </td>
+<td>Canonical</td>
+<td>−01:00</td>
+<td>−01:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>FO</td>
+<td>+6201−00646</td>
+<td>Atlantic/Faeroe</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td>Link to Atlantic/Faroe</td>
+</tr>
+<tr>
+<td>FO</td>
+<td>+6201−00646</td>
+<td>Atlantic/Faroe</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SJ</td>
+<td> </td>
+<td>Atlantic/Jan_Mayen</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Oslo</td>
+</tr>
+<tr>
+<td>PT</td>
+<td>+3238−01654</td>
+<td>Atlantic/Madeira</td>
+<td>Madeira Islands</td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>IS</td>
+<td>+6409−02151</td>
+<td>Atlantic/Reykjavik</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GS</td>
+<td>−5416−03632</td>
+<td>Atlantic/South_Georgia</td>
+<td> </td>
+<td>Canonical</td>
+<td>−02:00</td>
+<td>−02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SH</td>
+<td>−1555−00542</td>
+<td>Atlantic/St_Helena</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Africa/Abidjan</td>
+</tr>
+<tr>
+<td>FK</td>
+<td>−5142−05751</td>
+<td>Atlantic/Stanley</td>
+<td> </td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/ACT</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+10:00</td>
+<td>+11:00</td>
+<td>Link to Australia/Sydney</td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−3455+13835</td>
+<td>Australia/Adelaide</td>
+<td>South Australia</td>
+<td>Canonical</td>
+<td>+09:30</td>
+<td>+10:30</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−2728+15302</td>
+<td>Australia/Brisbane</td>
+<td>Queensland (most areas)</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−3157+14127</td>
+<td>Australia/Broken_Hill</td>
+<td>New South Wales (Yancowinna)</td>
+<td>Canonical</td>
+<td>+09:30</td>
+<td>+10:30</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/Canberra</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+10:00</td>
+<td>+11:00</td>
+<td>Link to Australia/Sydney</td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/Currie</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+10:00</td>
+<td>+11:00</td>
+<td>Link to Australia/Hobart</td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−1228+13050</td>
+<td>Australia/Darwin</td>
+<td>Northern Territory</td>
+<td>Canonical</td>
+<td>+09:30</td>
+<td>+09:30</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−3143+12852</td>
+<td>Australia/Eucla</td>
+<td>Western Australia (Eucla)</td>
+<td>Canonical</td>
+<td>+08:45</td>
+<td>+08:45</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−4253+14719</td>
+<td>Australia/Hobart</td>
+<td>Tasmania</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/LHI</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+10:30</td>
+<td>+11:00</td>
+<td>Link to Australia/Lord_Howe</td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−2016+14900</td>
+<td>Australia/Lindeman</td>
+<td>Queensland (Whitsunday Islands)</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−3133+15905</td>
+<td>Australia/Lord_Howe</td>
+<td>Lord Howe Island</td>
+<td>Canonical</td>
+<td>+10:30</td>
+<td>+11:00</td>
+<td>This is the only time zone in the world that uses 30-minute DST transitions.</td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−3749+14458</td>
+<td>Australia/Melbourne</td>
+<td>Victoria</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/North</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+09:30</td>
+<td>+09:30</td>
+<td>Link to Australia/Darwin</td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/NSW</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+10:00</td>
+<td>+11:00</td>
+<td>Link to Australia/Sydney</td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−3157+11551</td>
+<td>Australia/Perth</td>
+<td>Western Australia (most areas)</td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/Queensland</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td>Link to Australia/Brisbane</td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/South</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+09:30</td>
+<td>+10:30</td>
+<td>Link to Australia/Adelaide</td>
+</tr>
+<tr>
+<td>AU</td>
+<td>−3352+15113</td>
+<td>Australia/Sydney</td>
+<td>New South Wales (most areas)</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/Tasmania</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+10:00</td>
+<td>+11:00</td>
+<td>Link to Australia/Hobart</td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/Victoria</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+10:00</td>
+<td>+11:00</td>
+<td>Link to Australia/Melbourne</td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/West</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Australia/Perth</td>
+</tr>
+<tr>
+<td>AU</td>
+<td> </td>
+<td>Australia/Yancowinna</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+09:30</td>
+<td>+10:30</td>
+<td>Link to Australia/Broken_Hill</td>
+</tr>
+<tr>
+<td>BR</td>
+<td> </td>
+<td>Brazil/Acre</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td>Link to America/Rio_Branco</td>
+</tr>
+<tr>
+<td>BR</td>
+<td> </td>
+<td>Brazil/DeNoronha</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−02:00</td>
+<td>−02:00</td>
+<td>Link to America/Noronha</td>
+</tr>
+<tr>
+<td>BR</td>
+<td> </td>
+<td>Brazil/East</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Link to America/Sao_Paulo</td>
+</tr>
+<tr>
+<td>BR</td>
+<td> </td>
+<td>Brazil/West</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Link to America/Manaus</td>
+</tr>
+<tr>
+<td>CA</td>
+<td> </td>
+<td>Canada/Atlantic</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−04:00</td>
+<td>−03:00</td>
+<td>Link to America/Halifax</td>
+</tr>
+<tr>
+<td>CA</td>
+<td> </td>
+<td>Canada/Central</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td>Link to America/Winnipeg</td>
+</tr>
+<tr>
+<td>CA</td>
+<td> </td>
+<td>Canada/Eastern</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td>Link to America/Toronto</td>
+</tr>
+<tr>
+<td>CA</td>
+<td> </td>
+<td>Canada/Mountain</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td>Link to America/Edmonton</td>
+</tr>
+<tr>
+<td>CA</td>
+<td> </td>
+<td>Canada/Newfoundland</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−03:30</td>
+<td>−02:30</td>
+<td>Link to America/St_Johns</td>
+</tr>
+<tr>
+<td>CA</td>
+<td> </td>
+<td>Canada/Pacific</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−08:00</td>
+<td>−07:00</td>
+<td>Link to America/Vancouver</td>
+</tr>
+<tr>
+<td>CA</td>
+<td> </td>
+<td>Canada/Saskatchewan</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td>Link to America/Regina</td>
+</tr>
+<tr>
+<td>CA</td>
+<td> </td>
+<td>Canada/Yukon</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td>Link to America/Whitehorse</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>CET</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Choose a zone that observes CET, such as Europe/Paris.</td>
+</tr>
+<tr>
+<td>CL</td>
+<td> </td>
+<td>Chile/Continental</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−04:00</td>
+<td>−03:00</td>
+<td>Link to America/Santiago</td>
+</tr>
+<tr>
+<td>CL</td>
+<td> </td>
+<td>Chile/EasterIsland</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td>Link to Pacific/Easter</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>CST6CDT</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td>Choose a zone that observes CST with United States daylight saving time rules, such as America/Chicago.</td>
+</tr>
+<tr>
+<td>CU</td>
+<td> </td>
+<td>Cuba</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td>Link to America/Havana</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>EET</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td>Choose a zone that observes EET, such as Europe/Sofia.</td>
+</tr>
+<tr>
+<td>EG</td>
+<td> </td>
+<td>Egypt</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Cairo</td>
+</tr>
+<tr>
+<td>IE</td>
+<td> </td>
+<td>Eire</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+01:00</td>
+<td>+00:00</td>
+<td>Link to Europe/Dublin</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>EST</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td>Choose a zone that currently observes EST without daylight saving time, such as America/Cancun.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>EST5EDT</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td>Choose a zone that observes EST with United States daylight saving time rules, such as America/New_York.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+0</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/GMT</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+1</td>
+<td> </td>
+<td>Canonical</td>
+<td>−01:00</td>
+<td>−01:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+10</td>
+<td> </td>
+<td>Canonical</td>
+<td>−10:00</td>
+<td>−10:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+11</td>
+<td> </td>
+<td>Canonical</td>
+<td>−11:00</td>
+<td>−11:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+12</td>
+<td> </td>
+<td>Canonical</td>
+<td>−12:00</td>
+<td>−12:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+2</td>
+<td> </td>
+<td>Canonical</td>
+<td>−02:00</td>
+<td>−02:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+3</td>
+<td> </td>
+<td>Canonical</td>
+<td>−03:00</td>
+<td>−03:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+4</td>
+<td> </td>
+<td>Canonical</td>
+<td>−04:00</td>
+<td>−04:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+5</td>
+<td> </td>
+<td>Canonical</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+6</td>
+<td> </td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+7</td>
+<td> </td>
+<td>Canonical</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+8</td>
+<td> </td>
+<td>Canonical</td>
+<td>−08:00</td>
+<td>−08:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT+9</td>
+<td> </td>
+<td>Canonical</td>
+<td>−09:00</td>
+<td>−09:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-0</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/GMT</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-1</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+01:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-10</td>
+<td> </td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-11</td>
+<td> </td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-12</td>
+<td> </td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-13</td>
+<td> </td>
+<td>Canonical</td>
+<td>+13:00</td>
+<td>+13:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-14</td>
+<td> </td>
+<td>Canonical</td>
+<td>+14:00</td>
+<td>+14:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-2</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-3</td>
+<td> </td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-4</td>
+<td> </td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-5</td>
+<td> </td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-6</td>
+<td> </td>
+<td>Canonical</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-7</td>
+<td> </td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-8</td>
+<td> </td>
+<td>Canonical</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT-9</td>
+<td> </td>
+<td>Canonical</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td>Sign is intentionally inverted. See the Etc area description.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/GMT0</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/GMT</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/Greenwich</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/GMT</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/UCT</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/UTC</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/Universal</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/UTC</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/UTC</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Etc/Zulu</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/UTC</td>
+</tr>
+<tr>
+<td>NL</td>
+<td>+5222+00454</td>
+<td>Europe/Amsterdam</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AD</td>
+<td>+4230+00131</td>
+<td>Europe/Andorra</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+4621+04803</td>
+<td>Europe/Astrakhan</td>
+<td>MSK+01 - Astrakhan</td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GR</td>
+<td>+3758+02343</td>
+<td>Europe/Athens</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GB</td>
+<td> </td>
+<td>Europe/Belfast</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td>Link to Europe/London</td>
+</tr>
+<tr>
+<td>RS</td>
+<td>+4450+02030</td>
+<td>Europe/Belgrade</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>DE</td>
+<td>+5230+01322</td>
+<td>Europe/Berlin</td>
+<td>Germany (most areas)</td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>In 1945, the Trizone did not follow Berlin&#39;s switch to DST, see Time in Germany</td>
+</tr>
+<tr>
+<td>SK</td>
+<td>+4809+01707</td>
+<td>Europe/Bratislava</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Prague</td>
+</tr>
+<tr>
+<td>BE</td>
+<td>+5050+00420</td>
+<td>Europe/Brussels</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RO</td>
+<td>+4426+02606</td>
+<td>Europe/Bucharest</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>HU</td>
+<td>+4730+01905</td>
+<td>Europe/Budapest</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>DE</td>
+<td>+4742+00841</td>
+<td>Europe/Busingen</td>
+<td>Busingen</td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Zurich</td>
+</tr>
+<tr>
+<td>MD</td>
+<td>+4700+02850</td>
+<td>Europe/Chisinau</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>DK</td>
+<td>+5540+01235</td>
+<td>Europe/Copenhagen</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>IE</td>
+<td>+5320−00615</td>
+<td>Europe/Dublin</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GI</td>
+<td>+3608−00521</td>
+<td>Europe/Gibraltar</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GG</td>
+<td>+492717−0023210</td>
+<td>Europe/Guernsey</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td>Link to Europe/London</td>
+</tr>
+<tr>
+<td>FI</td>
+<td>+6010+02458</td>
+<td>Europe/Helsinki</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>IM</td>
+<td>+5409−00428</td>
+<td>Europe/Isle_of_Man</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td>Link to Europe/London</td>
+</tr>
+<tr>
+<td>TR</td>
+<td>+4101+02858</td>
+<td>Europe/Istanbul</td>
+<td> </td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>JE</td>
+<td>+491101−0020624</td>
+<td>Europe/Jersey</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td>Link to Europe/London</td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5443+02030</td>
+<td>Europe/Kaliningrad</td>
+<td>MSK-01 - Kaliningrad</td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>UA</td>
+<td>+5026+03031</td>
+<td>Europe/Kiev</td>
+<td>Ukraine (most areas)</td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5836+04939</td>
+<td>Europe/Kirov</td>
+<td>MSK+00 - Kirov</td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PT</td>
+<td>+3843−00908</td>
+<td>Europe/Lisbon</td>
+<td>Portugal (mainland)</td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SI</td>
+<td>+4603+01431</td>
+<td>Europe/Ljubljana</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Belgrade</td>
+</tr>
+<tr>
+<td>GB</td>
+<td>+513030−0000731</td>
+<td>Europe/London</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>LU</td>
+<td>+4936+00609</td>
+<td>Europe/Luxembourg</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>ES</td>
+<td>+4024−00341</td>
+<td>Europe/Madrid</td>
+<td>Spain (mainland)</td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MT</td>
+<td>+3554+01431</td>
+<td>Europe/Malta</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AX</td>
+<td>+6006+01957</td>
+<td>Europe/Mariehamn</td>
+<td> </td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td>Link to Europe/Helsinki</td>
+</tr>
+<tr>
+<td>BY</td>
+<td>+5354+02734</td>
+<td>Europe/Minsk</td>
+<td> </td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MC</td>
+<td>+4342+00723</td>
+<td>Europe/Monaco</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+554521+0373704</td>
+<td>Europe/Moscow</td>
+<td>MSK+00 - Moscow area</td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CY</td>
+<td>+3510+03322</td>
+<td>Europe/Nicosia</td>
+<td> </td>
+<td>Alias</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td>Link to Asia/Nicosia</td>
+</tr>
+<tr>
+<td>NO</td>
+<td>+5955+01045</td>
+<td>Europe/Oslo</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>FR</td>
+<td>+4852+00220</td>
+<td>Europe/Paris</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>ME</td>
+<td>+4226+01916</td>
+<td>Europe/Podgorica</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Belgrade</td>
+</tr>
+<tr>
+<td>CZ</td>
+<td>+5005+01426</td>
+<td>Europe/Prague</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>LV</td>
+<td>+5657+02406</td>
+<td>Europe/Riga</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>IT</td>
+<td>+4154+01229</td>
+<td>Europe/Rome</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5312+05009</td>
+<td>Europe/Samara</td>
+<td>MSK+01 - Samara, Udmurtia</td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SM</td>
+<td>+4355+01228</td>
+<td>Europe/San_Marino</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Rome</td>
+</tr>
+<tr>
+<td>BA</td>
+<td>+4352+01825</td>
+<td>Europe/Sarajevo</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Belgrade</td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5134+04602</td>
+<td>Europe/Saratov</td>
+<td>MSK+01 - Saratov</td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>UA</td>
+<td>+4457+03406</td>
+<td>Europe/Simferopol</td>
+<td>Crimea</td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Disputed - Reflects data in the TZDB.[note 2]</td>
+</tr>
+<tr>
+<td>MK</td>
+<td>+4159+02126</td>
+<td>Europe/Skopje</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Belgrade</td>
+</tr>
+<tr>
+<td>BG</td>
+<td>+4241+02319</td>
+<td>Europe/Sofia</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SE</td>
+<td>+5920+01803</td>
+<td>Europe/Stockholm</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>EE</td>
+<td>+5925+02445</td>
+<td>Europe/Tallinn</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AL</td>
+<td>+4120+01950</td>
+<td>Europe/Tirane</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MD</td>
+<td> </td>
+<td>Europe/Tiraspol</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td>Link to Europe/Chisinau</td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+5420+04824</td>
+<td>Europe/Ulyanovsk</td>
+<td>MSK+01 - Ulyanovsk</td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>UA</td>
+<td>+4837+02218</td>
+<td>Europe/Uzhgorod</td>
+<td>Transcarpathia</td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>LI</td>
+<td>+4709+00931</td>
+<td>Europe/Vaduz</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Zurich</td>
+</tr>
+<tr>
+<td>VA</td>
+<td>+415408+0122711</td>
+<td>Europe/Vatican</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Rome</td>
+</tr>
+<tr>
+<td>AT</td>
+<td>+4813+01620</td>
+<td>Europe/Vienna</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>LT</td>
+<td>+5441+02519</td>
+<td>Europe/Vilnius</td>
+<td> </td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>RU</td>
+<td>+4844+04425</td>
+<td>Europe/Volgograd</td>
+<td>MSK+00 - Volgograd</td>
+<td>Canonical</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PL</td>
+<td>+5215+02100</td>
+<td>Europe/Warsaw</td>
+<td> </td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>HR</td>
+<td>+4548+01558</td>
+<td>Europe/Zagreb</td>
+<td> </td>
+<td>Alias</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Belgrade</td>
+</tr>
+<tr>
+<td>UA</td>
+<td>+4750+03510</td>
+<td>Europe/Zaporozhye</td>
+<td>Zaporozhye and east Lugansk</td>
+<td>Canonical</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CH</td>
+<td>+4723+00832</td>
+<td>Europe/Zurich</td>
+<td>Swiss time</td>
+<td>Canonical</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Factory</td>
+<td> </td>
+<td>Canonical</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GB</td>
+<td> </td>
+<td>GB</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td>Link to Europe/London</td>
+</tr>
+<tr>
+<td>GB</td>
+<td> </td>
+<td>GB-Eire</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td>Link to Europe/London</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>GMT</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/GMT</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>GMT+0</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/GMT</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>GMT-0</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/GMT</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>GMT0</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/GMT</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Greenwich</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/GMT</td>
+</tr>
+<tr>
+<td>HK</td>
+<td>+2217+11409</td>
+<td>Hongkong</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Asia/Hong_Kong</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>HST</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−10:00</td>
+<td>−10:00</td>
+<td>Choose a zone that currently observes HST without daylight saving time, such as Pacific/Honolulu.</td>
+</tr>
+<tr>
+<td>IS</td>
+<td> </td>
+<td>Iceland</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Atlantic/Reykjavik</td>
+</tr>
+<tr>
+<td>MG</td>
+<td>−1855+04731</td>
+<td>Indian/Antananarivo</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Africa/Nairobi</td>
+</tr>
+<tr>
+<td>IO</td>
+<td>−0720+07225</td>
+<td>Indian/Chagos</td>
+<td> </td>
+<td>Canonical</td>
+<td>+06:00</td>
+<td>+06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CX</td>
+<td>−1025+10543</td>
+<td>Indian/Christmas</td>
+<td> </td>
+<td>Canonical</td>
+<td>+07:00</td>
+<td>+07:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CC</td>
+<td>−1210+09655</td>
+<td>Indian/Cocos</td>
+<td> </td>
+<td>Canonical</td>
+<td>+06:30</td>
+<td>+06:30</td>
+<td> </td>
+</tr>
+<tr>
+<td>KM</td>
+<td>−1141+04316</td>
+<td>Indian/Comoro</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Africa/Nairobi</td>
+</tr>
+<tr>
+<td>TF</td>
+<td>−492110+0701303</td>
+<td>Indian/Kerguelen</td>
+<td>Kerguelen, St Paul Island, Amsterdam Island</td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SC</td>
+<td>−0440+05528</td>
+<td>Indian/Mahe</td>
+<td> </td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MV</td>
+<td>+0410+07330</td>
+<td>Indian/Maldives</td>
+<td> </td>
+<td>Canonical</td>
+<td>+05:00</td>
+<td>+05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MU</td>
+<td>−2010+05730</td>
+<td>Indian/Mauritius</td>
+<td> </td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>YT</td>
+<td>−1247+04514</td>
+<td>Indian/Mayotte</td>
+<td> </td>
+<td>Alias</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Africa/Nairobi</td>
+</tr>
+<tr>
+<td>RE</td>
+<td>−2052+05528</td>
+<td>Indian/Reunion</td>
+<td>Réunion, Crozet, Scattered Islands</td>
+<td>Canonical</td>
+<td>+04:00</td>
+<td>+04:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>IR</td>
+<td> </td>
+<td>Iran</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+03:30</td>
+<td>+04:30</td>
+<td>Link to Asia/Tehran</td>
+</tr>
+<tr>
+<td>IL</td>
+<td> </td>
+<td>Israel</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+02:00</td>
+<td>+03:00</td>
+<td>Link to Asia/Jerusalem</td>
+</tr>
+<tr>
+<td>JM</td>
+<td>+175805−0764736</td>
+<td>Jamaica</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−05:00</td>
+<td>Link to America/Jamaica</td>
+</tr>
+<tr>
+<td>JP</td>
+<td> </td>
+<td>Japan</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td>Link to Asia/Tokyo</td>
+</tr>
+<tr>
+<td>MH</td>
+<td>+0905+16720</td>
+<td>Kwajalein</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td>Link to Pacific/Kwajalein</td>
+</tr>
+<tr>
+<td>LY</td>
+<td> </td>
+<td>Libya</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+02:00</td>
+<td>+02:00</td>
+<td>Link to Africa/Tripoli</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>MET</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Choose a zone that observes MET (sames as CET), such as Europe/Paris.</td>
+</tr>
+<tr>
+<td>MX</td>
+<td> </td>
+<td>Mexico/BajaNorte</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−08:00</td>
+<td>−07:00</td>
+<td>Link to America/Tijuana</td>
+</tr>
+<tr>
+<td>MX</td>
+<td> </td>
+<td>Mexico/BajaSur</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td>Link to America/Mazatlan</td>
+</tr>
+<tr>
+<td>MX</td>
+<td> </td>
+<td>Mexico/General</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td>Link to America/Mexico_City</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>MST</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td>Choose a zone that currently observes MST without daylight saving time, such as America/Phoenix.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>MST7MDT</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td>Choose a zone that observes MST with United States daylight saving time rules, such as America/Denver.</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>Navajo</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td>Link to America/Denver</td>
+</tr>
+<tr>
+<td>NZ</td>
+<td> </td>
+<td>NZ</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+12:00</td>
+<td>+13:00</td>
+<td>Link to Pacific/Auckland</td>
+</tr>
+<tr>
+<td>NZ</td>
+<td> </td>
+<td>NZ-CHAT</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+12:45</td>
+<td>+13:45</td>
+<td>Link to Pacific/Chatham</td>
+</tr>
+<tr>
+<td>WS</td>
+<td>−1350−17144</td>
+<td>Pacific/Apia</td>
+<td> </td>
+<td>Canonical</td>
+<td>+13:00</td>
+<td>+14:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>NZ</td>
+<td>−3652+17446</td>
+<td>Pacific/Auckland</td>
+<td>New Zealand time</td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+13:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PG</td>
+<td>−0613+15534</td>
+<td>Pacific/Bougainville</td>
+<td>Bougainville</td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>NZ</td>
+<td>−4357−17633</td>
+<td>Pacific/Chatham</td>
+<td>Chatham Islands</td>
+<td>Canonical</td>
+<td>+12:45</td>
+<td>+13:45</td>
+<td> </td>
+</tr>
+<tr>
+<td>FM</td>
+<td>+0725+15147</td>
+<td>Pacific/Chuuk</td>
+<td>Chuuk/Truk, Yap</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CL</td>
+<td>−2709−10926</td>
+<td>Pacific/Easter</td>
+<td>Easter Island</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>VU</td>
+<td>−1740+16825</td>
+<td>Pacific/Efate</td>
+<td> </td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KI</td>
+<td>−0308−17105</td>
+<td>Pacific/Enderbury</td>
+<td>Phoenix Islands</td>
+<td>Canonical</td>
+<td>+13:00</td>
+<td>+13:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TK</td>
+<td>−0922−17114</td>
+<td>Pacific/Fakaofo</td>
+<td> </td>
+<td>Canonical</td>
+<td>+13:00</td>
+<td>+13:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>FJ</td>
+<td>−1808+17825</td>
+<td>Pacific/Fiji</td>
+<td> </td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+13:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TV</td>
+<td>−0831+17913</td>
+<td>Pacific/Funafuti</td>
+<td> </td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>EC</td>
+<td>−0054−08936</td>
+<td>Pacific/Galapagos</td>
+<td>Galápagos Islands</td>
+<td>Canonical</td>
+<td>−06:00</td>
+<td>−06:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PF</td>
+<td>−2308−13457</td>
+<td>Pacific/Gambier</td>
+<td>Gambier Islands</td>
+<td>Canonical</td>
+<td>−09:00</td>
+<td>−09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>SB</td>
+<td>−0932+16012</td>
+<td>Pacific/Guadalcanal</td>
+<td> </td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>GU</td>
+<td>+1328+14445</td>
+<td>Pacific/Guam</td>
+<td> </td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>US</td>
+<td>+211825−1575130</td>
+<td>Pacific/Honolulu</td>
+<td>Hawaii</td>
+<td>Canonical</td>
+<td>−10:00</td>
+<td>−10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>UM</td>
+<td> </td>
+<td>Pacific/Johnston</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−10:00</td>
+<td>−10:00</td>
+<td>Link to Pacific/Honolulu</td>
+</tr>
+<tr>
+<td>KI</td>
+<td>+0152−15720</td>
+<td>Pacific/Kiritimati</td>
+<td>Line Islands</td>
+<td>Canonical</td>
+<td>+14:00</td>
+<td>+14:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>FM</td>
+<td>+0519+16259</td>
+<td>Pacific/Kosrae</td>
+<td>Kosrae</td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MH</td>
+<td>+0905+16720</td>
+<td>Pacific/Kwajalein</td>
+<td>Kwajalein</td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MH</td>
+<td>+0709+17112</td>
+<td>Pacific/Majuro</td>
+<td>Marshall Islands (most areas)</td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PF</td>
+<td>−0900−13930</td>
+<td>Pacific/Marquesas</td>
+<td>Marquesas Islands</td>
+<td>Canonical</td>
+<td>−09:30</td>
+<td>−09:30</td>
+<td> </td>
+</tr>
+<tr>
+<td>UM</td>
+<td>+2813−17722</td>
+<td>Pacific/Midway</td>
+<td>Midway Islands</td>
+<td>Alias</td>
+<td>−11:00</td>
+<td>−11:00</td>
+<td>Link to Pacific/Pago_Pago</td>
+</tr>
+<tr>
+<td>NR</td>
+<td>−0031+16655</td>
+<td>Pacific/Nauru</td>
+<td> </td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>NU</td>
+<td>−1901−16955</td>
+<td>Pacific/Niue</td>
+<td> </td>
+<td>Canonical</td>
+<td>−11:00</td>
+<td>−11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>NF</td>
+<td>−2903+16758</td>
+<td>Pacific/Norfolk</td>
+<td> </td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+12:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>NC</td>
+<td>−2216+16627</td>
+<td>Pacific/Noumea</td>
+<td> </td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>AS</td>
+<td>−1416−17042</td>
+<td>Pacific/Pago_Pago</td>
+<td>Samoa, Midway</td>
+<td>Canonical</td>
+<td>−11:00</td>
+<td>−11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PW</td>
+<td>+0720+13429</td>
+<td>Pacific/Palau</td>
+<td> </td>
+<td>Canonical</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>PN</td>
+<td>−2504−13005</td>
+<td>Pacific/Pitcairn</td>
+<td> </td>
+<td>Canonical</td>
+<td>−08:00</td>
+<td>−08:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>FM</td>
+<td>+0658+15813</td>
+<td>Pacific/Pohnpei</td>
+<td>Pohnpei/Ponape</td>
+<td>Canonical</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>FM</td>
+<td> </td>
+<td>Pacific/Ponape</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+11:00</td>
+<td>+11:00</td>
+<td>Link to Pacific/Pohnpei</td>
+</tr>
+<tr>
+<td>PG</td>
+<td>−0930+14710</td>
+<td>Pacific/Port_Moresby</td>
+<td>Papua New Guinea (most areas)</td>
+<td>Canonical</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>CK</td>
+<td>−2114−15946</td>
+<td>Pacific/Rarotonga</td>
+<td> </td>
+<td>Canonical</td>
+<td>−10:00</td>
+<td>−10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>MP</td>
+<td>+1512+14545</td>
+<td>Pacific/Saipan</td>
+<td> </td>
+<td>Alias</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td>Link to Pacific/Guam</td>
+</tr>
+<tr>
+<td>WS</td>
+<td> </td>
+<td>Pacific/Samoa</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−11:00</td>
+<td>−11:00</td>
+<td>Link to Pacific/Pago_Pago</td>
+</tr>
+<tr>
+<td>PF</td>
+<td>−1732−14934</td>
+<td>Pacific/Tahiti</td>
+<td>Society Islands</td>
+<td>Canonical</td>
+<td>−10:00</td>
+<td>−10:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>KI</td>
+<td>+0125+17300</td>
+<td>Pacific/Tarawa</td>
+<td>Gilbert Islands</td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>TO</td>
+<td>−2110−17510</td>
+<td>Pacific/Tongatapu</td>
+<td> </td>
+<td>Canonical</td>
+<td>+13:00</td>
+<td>+13:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>FM</td>
+<td> </td>
+<td>Pacific/Truk</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td>Link to Pacific/Chuuk</td>
+</tr>
+<tr>
+<td>UM</td>
+<td>+1917+16637</td>
+<td>Pacific/Wake</td>
+<td>Wake Island</td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>WF</td>
+<td>−1318−17610</td>
+<td>Pacific/Wallis</td>
+<td> </td>
+<td>Canonical</td>
+<td>+12:00</td>
+<td>+12:00</td>
+<td> </td>
+</tr>
+<tr>
+<td>FM</td>
+<td> </td>
+<td>Pacific/Yap</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+10:00</td>
+<td>+10:00</td>
+<td>Link to Pacific/Chuuk</td>
+</tr>
+<tr>
+<td>PL</td>
+<td> </td>
+<td>Poland</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+01:00</td>
+<td>+02:00</td>
+<td>Link to Europe/Warsaw</td>
+</tr>
+<tr>
+<td>PT</td>
+<td> </td>
+<td>Portugal</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td>Link to Europe/Lisbon</td>
+</tr>
+<tr>
+<td>CN</td>
+<td> </td>
+<td>PRC</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Asia/Shanghai</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>PST8PDT</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−08:00</td>
+<td>−07:00</td>
+<td>Choose a zone that observes PST with United States daylight saving time rules, such as America/Los_Angeles.</td>
+</tr>
+<tr>
+<td>TW</td>
+<td> </td>
+<td>ROC</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Asia/Taipei</td>
+</tr>
+<tr>
+<td>KR</td>
+<td> </td>
+<td>ROK</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+09:00</td>
+<td>+09:00</td>
+<td>Link to Asia/Seoul</td>
+</tr>
+<tr>
+<td>SG</td>
+<td>+0117+10351</td>
+<td>Singapore</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+08:00</td>
+<td>+08:00</td>
+<td>Link to Asia/Singapore</td>
+</tr>
+<tr>
+<td>TR</td>
+<td> </td>
+<td>Turkey</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Europe/Istanbul</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>UCT</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/UTC</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Universal</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/UTC</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/Alaska</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−09:00</td>
+<td>−08:00</td>
+<td>Link to America/Anchorage</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/Aleutian</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−10:00</td>
+<td>−09:00</td>
+<td>Link to America/Adak</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/Arizona</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−07:00</td>
+<td>−07:00</td>
+<td>Link to America/Phoenix</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/Central</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td>Link to America/Chicago</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/East-Indiana</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td>Link to America/Indiana/Indianapolis</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/Eastern</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td>Link to America/New_York</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/Hawaii</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−10:00</td>
+<td>−10:00</td>
+<td>Link to Pacific/Honolulu</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/Indiana-Starke</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−06:00</td>
+<td>−05:00</td>
+<td>Link to America/Indiana/Knox</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/Michigan</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−05:00</td>
+<td>−04:00</td>
+<td>Link to America/Detroit</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/Mountain</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−07:00</td>
+<td>−06:00</td>
+<td>Link to America/Denver</td>
+</tr>
+<tr>
+<td>US</td>
+<td> </td>
+<td>US/Pacific</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−08:00</td>
+<td>−07:00</td>
+<td>Link to America/Los_Angeles</td>
+</tr>
+<tr>
+<td>WS</td>
+<td> </td>
+<td>US/Samoa</td>
+<td> </td>
+<td>Deprecated</td>
+<td>−11:00</td>
+<td>−11:00</td>
+<td>Link to Pacific/Pago_Pago</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>UTC</td>
+<td> </td>
+<td>Alias</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/UTC</td>
+</tr>
+<tr>
+<td>RU</td>
+<td> </td>
+<td>W-SU</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+03:00</td>
+<td>+03:00</td>
+<td>Link to Europe/Moscow</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>WET</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+01:00</td>
+<td>Choose a zone that observes WET, such as Europe/Lisbon.</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td>Zulu</td>
+<td> </td>
+<td>Deprecated</td>
+<td>+00:00</td>
+<td>+00:00</td>
+<td>Link to Etc/UTC</td>
+</tr>
+</tbody></table>
+
+</body>
+
+</html>

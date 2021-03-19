@@ -1,3 +1,10 @@
+#define DISPLAY_UPDATE(x) display.update(x)
+#define ERASE_DISPLAY(x) display.eraseDisplay(x);
+// #define DISPLAY_UPDATE(x) 
+// #define ERASE_DISPLAY(x)
+
+#include <FS.h>          // this needs to be first, or it all crashes and burns...
+
 // include library, include base class, make path known
 #include <GxEPD.h>
 #include <GxIO/GxIO_SPI/GxIO_SPI.h>
@@ -16,6 +23,8 @@
 #include <Fonts/FreeSerifBoldItalic9pt7b.h>
 #include <Fonts/FreeSerifItalic9pt7b.h>
 
+#include <time.h>
+
 //#define DEFALUT_FONT  FreeMono9pt7b
 // #define DEFALUT_FONT  FreeMonoBoldOblique9pt7b
 // #define DEFALUT_FONT FreeMonoBold9pt7b
@@ -28,6 +37,9 @@
 // #define DEFALUT_FONT FreeSerifBold9pt7b
 // #define DEFALUT_FONT FreeSerifBoldItalic9pt7b
 // #define DEFALUT_FONT FreeSerifItalic9pt7b
+
+#define EPROM_UTC_OFFSET_SLOT 0
+#define EPROM_UTC_DST_OFFSET_SLOT 1
 
 const GFXfont *fonts[] = {
     &FreeMono9pt7b,
@@ -46,7 +58,6 @@ const GFXfont *fonts[] = {
 
 #include <WiFi.h>
 #include <AsyncTCP.h>
-#include <ESPAsyncWebServer.h>
 #include <ESPmDNS.h>
 #include <Wire.h>
 #include "SD.h"
@@ -58,6 +69,13 @@ const GFXfont *fonts[] = {
 #include "Esp.h"
 #include "board_def.h"
 #include <Button2.h>
+
+#include <WiFiManager.h>  
+#include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
+
+#include <SPIFFS.h>
+
+WiFiManager wifiManager;
 
 #define FILESYSTEM SPIFFS
 
@@ -74,19 +92,12 @@ const GFXfont *fonts[] = {
 #define IP5306_ADDR 0X75
 #define IP5306_REG_SYS_CTL0 0x00
 
-void showMianPage(void);
-void showQrPage(void);
 void displayInit(void);
 void drawBitmap(const char *filename, int16_t x, int16_t y, bool with_color);
 
-typedef struct {
-    char name[32];
-    char link[64];
-    char tel[64];
-    char company[64];
-    char email[64];
-    char address[128];
-} Badge_Info_t;
+
+int utc_offset=0;
+int utc_dst_offset=0;
 
 typedef enum {
     RIGHT_ALIGNMENT = 0,
@@ -94,12 +105,9 @@ typedef enum {
     CENTER_ALIGNMENT,
 } Text_alignment;
 
-AsyncWebServer server(80);
-
 GxIO_Class io(SPI, ELINK_SS, ELINK_DC, ELINK_RESET);
 GxEPD_Class display(io, ELINK_RESET, ELINK_BUSY);
 
-Badge_Info_t info;
 static const uint16_t input_buffer_pixels = 20;       // may affect performance
 static const uint16_t max_palette_pixels = 256;       // for depth <= 8
 uint8_t mono_palette_buffer[max_palette_pixels / 8];  // palette buffer for depth <= 8 b/w
@@ -130,7 +138,7 @@ void button_handle(uint8_t gpio)
         Serial.printf("Show Num: %d font\n", i);
         i = ((i + 1) >= sizeof(fonts) / sizeof(fonts[0])) ? 0 : i + 1;
         display.setFont(fonts[i]);
-        showMianPage();
+        // showMianPage();
     }
     break;
 #endif
@@ -139,10 +147,10 @@ void button_handle(uint8_t gpio)
     case BUTTON_3: {
         static bool index = 1;
         if (!index) {
-            showMianPage();
+            // showMianPage();
             index = true;
         } else {
-            showQrPage();
+            // showQrPage();
             index = false;
         }
     }
@@ -153,12 +161,16 @@ void button_handle(uint8_t gpio)
     }
 }
 
+bool anybuttonsdown=false;
+
 void button_callback(Button2 &b)
 {
+    anybuttonsdown=false;
     for (int i = 0; i < sizeof(g_btns) / sizeof(g_btns[0]); ++i) {
         if (pBtns[i] == b) {
             Serial.printf("btn: %u press\n", pBtns[i].getAttachPin());
-            button_handle(pBtns[i].getAttachPin());
+            // button_handle(pBtns[i].getAttachPin());
+            anybuttonsdown=true;
         }
     }
 }
@@ -204,232 +216,21 @@ void displayText(const String &str, int16_t y, uint8_t alignment)
     display.println(str);
 }
 
-void saveBadgeInfo(Badge_Info_t *info)
-{
-    // Open file for writing
-    File file = FILESYSTEM.open(BADGE_CONFIG_FILE_NAME, FILE_WRITE);
-    if (!file) {
-        Serial.println(F("Failed to create file"));
-        return;
-    }
-#if ARDUINOJSON_VERSION_MAJOR == 5
-    StaticJsonBuffer<256> jsonBuffer;
-    JsonObject &root = jsonBuffer.createObject();
-#elif ARDUINOJSON_VERSION_MAJOR == 6
-    StaticJsonDocument<256> root;
-#endif
-    // Set the values
-    root["company"] = info->company;
-    root["name"] = info->name;
-    root["address"] = info->address;
-    root["email"] = info->email;
-    root["link"] = info->link;
-    root["tel"] = info->tel;
 
-#if ARDUINOJSON_VERSION_MAJOR == 5
-    if (root.printTo(file) == 0)
-#elif ARDUINOJSON_VERSION_MAJOR == 6
-    if (serializeJson(root, file) == 0)
-#endif
-    {
-        Serial.println(F("Failed to write to file"));
-    }
-    // Close the file (File's destructor doesn't close the file)
-    file.close();
-}
 
-void loadDefaultInfo(void)
-{
-    strlcpy(info.company, "Xin Yuan Electronic", sizeof(info.company));
-    strlcpy(info.name, "Lilygo", sizeof(info.name));
-    strlcpy(info.address, "ShenZhen", sizeof(info.address));
-    strlcpy(info.email, "lily@lilygo.cc", sizeof(info.email));
-    strlcpy(info.link, "http://www.lilygo.cn", sizeof(info.link));
-    strlcpy(info.tel, "0755-83380665", sizeof(info.tel));
-    saveBadgeInfo(&info);
-}
 
-bool loadBadgeInfo(Badge_Info_t *info)
-{
-    if (!FILESYSTEM.exists(BADGE_CONFIG_FILE_NAME)) {
-        Serial.println("load configure fail");
-        return false;
-    }
+// void showMianPage(void)
+// {
+//     displayInit();
+//     display.fillScreen(GxEPD_WHITE);
+//     drawBitmap(DEFALUT_AVATAR_BMP, 10, 10, true);
+//     displayText(String(info.name), 30, RIGHT_ALIGNMENT);
+//     displayText(String(info.company), 50, RIGHT_ALIGNMENT);
+//     displayText(String(info.email), 70, RIGHT_ALIGNMENT);
+//     displayText(String(info.link), 90, RIGHT_ALIGNMENT);
+//     display.update();
+// }
 
-    File file = FILESYSTEM.open(BADGE_CONFIG_FILE_NAME);
-    if (!file) {
-        Serial.println("Open Fial -->");
-        return false;
-    }
-
-#if ARDUINOJSON_VERSION_MAJOR == 5
-    StaticJsonBuffer<256> jsonBuffer;
-    JsonObject &root = jsonBuffer.parseObject(file);
-    if (!root.success()) {
-        Serial.println(F("Failed to read file, using default configuration"));
-        file.close();
-        return false;
-    }
-    root.printTo(Serial);
-#elif ARDUINOJSON_VERSION_MAJOR == 6
-    StaticJsonDocument<256> root;
-    DeserializationError error = deserializeJson(root, file);
-    if (error) {
-        Serial.println(F("Failed to read file, using default configuration"));
-        file.close();
-        return false;
-    }
-#endif
-    if ((const char *)root["company"] == NULL) {
-        return false;
-    }
-    strlcpy(info->company, root["company"], sizeof(info->company));
-    strlcpy(info->name, root["name"], sizeof(info->name));
-    strlcpy(info->address, root["address"], sizeof(info->address));
-    strlcpy(info->email, root["email"], sizeof(info->email));
-    strlcpy(info->link, root["link"], sizeof(info->link));
-    strlcpy(info->tel, root["tel"], sizeof(info->tel));
-    file.close();
-    return true;
-}
-
-void WebServerStart(void)
-{
-
-#ifdef USE_AP_MODE
-    uint8_t mac[6];
-    char apName[18] = {0};
-    IPAddress apIP = IPAddress(192, 168, 1, 1);
-
-    WiFi.mode(WIFI_AP);
-
-    WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
-
-    esp_wifi_get_mac(WIFI_IF_STA, mac);
-
-    sprintf(apName, "TTGO-Badge-%02X:%02X", mac[4], mac[5]);
-
-    if (!WiFi.softAP(apName)) {
-        Serial.println("AP Config failed.");
-        return;
-    } else {
-        Serial.println("AP Config Success.");
-        Serial.print("AP MAC: ");
-        Serial.println(WiFi.softAPmacAddress());
-    }
-#else
-    WiFi.mode(WIFI_STA);
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-
-    while (WiFi.waitForConnectResult() != WL_CONNECTED) {
-        Serial.print(".");
-        esp_restart();
-    }
-    Serial.println(F("WiFi connected"));
-    Serial.println("");
-    Serial.println(WiFi.localIP());
-#endif
-
-    if (MDNS.begin("ttgo")) {
-        Serial.println("MDNS responder started");
-    }
-
-    server.serveStatic("/", FILESYSTEM, "/").setDefaultFile("index.html");
-
-    server.on("css/main.css", HTTP_GET, [](AsyncWebServerRequest * request) {
-        request->send(FILESYSTEM, "css/main.css", "text/css");
-    });
-    server.on("js/jquery.min.js", HTTP_GET, [](AsyncWebServerRequest * request) {
-        request->send(FILESYSTEM, "js/jquery.min.js", "application/javascript");
-    });
-    server.on("js/tbdValidate.js", HTTP_GET, [](AsyncWebServerRequest * request) {
-        request->send(FILESYSTEM, "js/tbdValidate.js", "application/javascript");
-    });
-    server.on("/data", HTTP_POST, [](AsyncWebServerRequest * request) {
-        request->send(200, "text/plain", "");
-
-        for (int i = 0; i < request->params(); i++) {
-            String name = request->getParam(i)->name();
-            String params = request->getParam(i)->value();
-            Serial.println(name + " : " + params);
-            if (name == "company") {
-                strlcpy(info.company, params.c_str(), sizeof(info.company));
-            } else if (name == "name") {
-                strlcpy(info.name, params.c_str(), sizeof(info.name));
-            } else if (name == "address") {
-                strlcpy(info.address, params.c_str(), sizeof(info.address));
-            } else if (name == "email") {
-                strlcpy(info.email, params.c_str(), sizeof(info.email));
-            } else if (name == "link") {
-                strlcpy(info.link, params.c_str(), sizeof(info.link));
-            } else if (name == "tel") {
-                strlcpy(info.tel, params.c_str(), sizeof(info.tel));
-            }
-        }
-        saveBadgeInfo(&info);
-    });
-
-    server.onFileUpload([](AsyncWebServerRequest * request, const String & filename, size_t index, uint8_t *data, size_t len, bool final) {
-        static File file;
-        static int pathIndex = 0;
-        if (!index) {
-            Serial.printf("UploadStart: %s\n", filename.c_str());
-            file = FILESYSTEM.open(path[pathIndex], FILE_WRITE);
-            if (!file) {
-                Serial.println("Open FAIL");
-                request->send(500, "text/plain", "hander error");
-                return;
-            }
-        }
-        if (file.write(data, len) != len) {
-            Serial.println("Write fail");
-            request->send(500, "text/plain", "hander error");
-            file.close();
-            return;
-        }
-
-        if (final) {
-            Serial.printf("UploadEnd: %s (%u)\n", filename.c_str(), index + len);
-            file.close();
-            request->send(200, "text/plain", "");
-            if (++pathIndex >= 2) {
-                pathIndex = 0;
-                showMianPage();
-            }
-        }
-    });
-
-    server.onNotFound([](AsyncWebServerRequest * request) {
-        request->send(404, "text/plain", "Not found");
-    });
-
-    MDNS.addService("http", "tcp", 80);
-
-    server.begin();
-}
-
-void showMianPage(void)
-{
-    displayInit();
-    display.fillScreen(GxEPD_WHITE);
-    drawBitmap(DEFALUT_AVATAR_BMP, 10, 10, true);
-    displayText(String(info.name), 30, RIGHT_ALIGNMENT);
-    displayText(String(info.company), 50, RIGHT_ALIGNMENT);
-    displayText(String(info.email), 70, RIGHT_ALIGNMENT);
-    displayText(String(info.link), 90, RIGHT_ALIGNMENT);
-    display.update();
-}
-
-void showQrPage(void)
-{
-    displayInit();
-    display.fillScreen(GxEPD_WHITE);
-    drawBitmap(DEFALUT_QR_CODE_BMP, 10, 10, true);
-    displayText(String(info.tel), 50, RIGHT_ALIGNMENT);
-    displayText(String(info.email), 70, RIGHT_ALIGNMENT);
-    displayText(String(info.address), 90, RIGHT_ALIGNMENT);
-    display.update();
-}
 
 uint16_t read16(File &f)
 {
@@ -627,31 +428,31 @@ void displayInit(void)
     }
     isInit = true;
     display.init();
-    display.setRotation(1);
-    display.eraseDisplay();
+    display.setRotation(0);
+    ERASE_DISPLAY();
     display.setTextColor(GxEPD_BLACK);
     display.setFont(&DEFALUT_FONT);
     display.setTextSize(0);
 
-    if (SDCARD_SS > 0) {
-        display.fillScreen(GxEPD_WHITE);
-#if !(TTGO_T5_2_2)
-        SPIClass sdSPI(VSPI);
-        sdSPI.begin(SDCARD_CLK, SDCARD_MISO, SDCARD_MOSI, SDCARD_SS);
-        if (!SD.begin(SDCARD_SS, sdSPI))
-#else
-        if (!SD.begin(SDCARD_SS))
-#endif
-        {
-            displayText("SDCard MOUNT FAIL", 50, CENTER_ALIGNMENT);
-        } else {
-            displayText("SDCard MOUNT PASS", 50, CENTER_ALIGNMENT);
-            uint32_t cardSize = SD.cardSize() / (1024 * 1024);
-            displayText("SDCard Size: " + String(cardSize) + "MB", 70, CENTER_ALIGNMENT);
-        }
-        display.update();
-        delay(2000);
-    }
+//     if (SDCARD_SS > 0) {
+//         display.fillScreen(GxEPD_WHITE);
+// #if !(TTGO_T5_2_2)
+//         SPIClass sdSPI(VSPI);
+//         sdSPI.begin(SDCARD_CLK, SDCARD_MISO, SDCARD_MOSI, SDCARD_SS);
+//         if (!SD.begin(SDCARD_SS, sdSPI))
+// #else
+//         if (!SD.begin(SDCARD_SS))
+// #endif
+//         {
+//             displayText("SDCard MOUNT FAIL", 50, CENTER_ALIGNMENT);
+//         } else {
+//             displayText("SDCard MOUNT PASS", 50, CENTER_ALIGNMENT);
+//             uint32_t cardSize = SD.cardSize() / (1024 * 1024);
+//             displayText("SDCard Size: " + String(cardSize) + "MB", 70, CENTER_ALIGNMENT);
+//         }
+//         display.update();
+//         delay(2000);
+//     }
 }
 
 bool setPowerBoostKeepOn(int en)
@@ -665,10 +466,280 @@ bool setPowerBoostKeepOn(int en)
     return Wire.endTransmission() == 0;
 }
 
+const char*  WIFI_PORTAL_NAME = "ilo-tenpo";
+const char*  WIFI_IP_NAME = "192.168.4.1";
+
+void configModeCallback (WiFiManager *myWiFiManager) {
+    displayInit();
+    display.fillScreen(GxEPD_WHITE);
+    displayText(String("o toki tawa ilo kon \"")+ WIFI_PORTAL_NAME+String("\"."), 30, LEFT_ALIGNMENT);
+    displayText(String("o lukin e lipu \"")+ WIFI_IP_NAME+String("\"."), 70, LEFT_ALIGNMENT);
+
+    DISPLAY_UPDATE();
+}
+
+void cantConnect(){
+    displayInit();
+        display.fillScreen(GxEPD_WHITE);
+        displayText(String("mi ken ala toki tawa ilo kon \"")+wifiManager.getWiFiSSID()+String("\"."), 30, LEFT_ALIGNMENT);
+
+        DISPLAY_UPDATE();
+        delay(5000);
+        //reset and try again, or maybe put it to deep sleep
+        ESP.restart();
+}
+
+String getParam(String name){
+  //read parameter from server, for customhmtl input
+  String value;
+  if(wifiManager.server->hasArg(name)) {
+    value = wifiManager.server->arg(name);
+  }
+  return value;
+}
+
+WiFiManagerParameter custom_field;
+
+char utc_offset_cstr[5];
+char utc_dst_offset_cstr[5];
+
+void saveParams(){
+
+
+    Serial.println("not dirty; saving config");
+    DynamicJsonDocument doc(1024);
+    doc["utc_offset"] = itoa(utc_offset,utc_offset_cstr,10);
+    doc["utc_dst_offset"] = itoa(utc_dst_offset,utc_dst_offset_cstr,10);
+
+
+    File configFile = SPIFFS.open("/config.json", "w");
+    if (!configFile) {
+      Serial.println("failed to open config file for writing");
+    }
+    
+    serializeJsonPretty(doc,Serial);
+    serializeJson(doc,configFile);
+    
+    configFile.close();
+}
+
+void saveParamCallback(){
+  Serial.println("[CALLBACK] saveParamCallback fired");
+  
+  int utc_offset_new = atoi(getParam("utc_offset").c_str());
+  int utc_dst_offset_new = atoi(getParam("utc_dst_offset").c_str());
+
+    if (utc_offset_new!=utc_offset ||utc_dst_offset_new!=utc_dst_offset ){
+        utc_offset = utc_offset_new;
+        utc_dst_offset = utc_dst_offset_new;
+
+        saveParams();
+    }
+
+}
+
+String format_time(int houroffset,int halfhouroffset){
+    String sign = String(houroffset<0?"-" : ( halfhouroffset<0?"-" : "+"));
+    String hour = String(houroffset<0?-houroffset:houroffset);
+    return sign+hour+":"+   String(halfhouroffset==0?"00":"30");
+}
+
+String genTimeZoneDropdown(int selected){
+    String dropdownwifi=String("");
+
+    for (int hoursoffset=-23;hoursoffset<=23;hoursoffset++){
+        if (hoursoffset<0){
+            {
+                int index = hoursoffset*2-1;
+                String offset_str = format_time(hoursoffset,-1);
+                String selected_str = index==selected ? " selected " : "";
+                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
+            }
+            {
+                int index = hoursoffset*2;
+                String selected_str = index==selected ? " selected " : "";
+                String offset_str = format_time(hoursoffset,0);
+                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
+            }
+        } else if (hoursoffset==0){
+            {
+                int index = hoursoffset*2-1;
+                String selected_str = index==selected ? " selected " : "";
+                String offset_str = format_time(hoursoffset,-1);
+                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
+            }
+            {
+                int index = hoursoffset*2;
+                String selected_str = index==selected ? " selected " : "";
+                String offset_str = format_time(hoursoffset,0);
+                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
+            }
+            {
+                int index = hoursoffset*2+1;
+                String selected_str = index==selected ? " selected " : "";
+                String offset_str = format_time(hoursoffset,-1);
+                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
+            }
+        } else {//if hoursoffset>0
+            {
+                int index = hoursoffset*2;
+                String selected_str = index==selected ? " selected " : "";
+                String offset_str = format_time(hoursoffset,0);
+                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
+            }
+            {
+                int index = hoursoffset*2+1;
+                String selected_str = index==selected ? " selected " : "";
+                String offset_str = format_time(hoursoffset,-1);
+                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
+            }
+        }
+    }
+    return dropdownwifi;
+}
+
+
+void webServerCallback(){
+    wifiManager.server->serveStatic("/timezones.html",FILESYSTEM,"/timezones.html");
+}
+
+
+void setupWifi(){
+
+
+// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    String dropdownwifi = String ("<br/><h3>Timezones</h3><br/> (<a href='/timezones.html'>table of values here</a>)<br/><label for='utc_offset'>Timezone UTC offset ±hh:mm:</label></p><select id='utc_offset' name='utc_offset'>");
+    dropdownwifi += genTimeZoneDropdown(utc_offset);
+    dropdownwifi += String("</select>");
+
+    dropdownwifi += String("<br/><br/><label for='utc_dst_offset'>Timezone Daylight Saving Times UTC offset ±hh:mm:</label></p><select id='utc_dst_offset' name='utc_dst_offset'>");
+    dropdownwifi += genTimeZoneDropdown(utc_dst_offset);
+    dropdownwifi += String("</select>");
+    Serial.println("Aasd1");
+    new (&custom_field) WiFiManagerParameter(dropdownwifi.c_str()); // custom html input
+    wifiManager.setWebServerCallback(webServerCallback);
+    wifiManager.addParameter(&custom_field);
+    wifiManager.setSaveParamsCallback(saveParamCallback);
+    Serial.println("Aasd2");
+    
+    wifiManager.setAPCallback(configModeCallback);
+
+    Serial.println("Aasd3");
+
+    button_loop();
+    anybuttonsdown = false;
+    Serial.println("BUTTONS");
+    for (int i = 0; i < sizeof(g_btns) / sizeof(g_btns[0]); ++i) {
+        
+        Serial.println(i);
+        if (digitalRead(g_btns[i])==LOW){
+            Serial.println("LOW");
+            anybuttonsdown = true;
+        } else {
+            Serial.println("HIGH");
+
+        }
+    }
+    if (anybuttonsdown){
+        
+        for (int i=0;i<5;i++){
+            ledcWriteTone(CHANNEL_0, 400);
+            delay(20);
+            ledcWriteTone(CHANNEL_0, 800);
+            delay(20);
+        }  
+
+
+            ledcWriteTone(CHANNEL_0, 0);
+
+        if (!wifiManager.startConfigPortal(WIFI_PORTAL_NAME)){
+            cantConnect();
+        }
+    } else if (! wifiManager.autoConnect(WIFI_PORTAL_NAME)) {
+        cantConnect();
+    }
+    Serial.println("Aasd4");
+
+}
+
+#include <NTPClient.h>
+
+
+WiFiUDP ntpUDP;
+// NTPClient timeClient(ntpUDP);
+// String timezone;
+
+void setupNTP(){
+    
+    // timeClient.begin();
+}
+
+void setupSpiffs(){
+  //clean FS, for testing
+  // SPIFFS.format();
+
+  //read configuration from FS json
+  Serial.println("mounting FS...");
+
+  if (SPIFFS.begin()) {
+    Serial.println("mounted file system");
+    if (SPIFFS.exists("/config.json")) {
+      //file exists, reading and loading
+      Serial.println("reading config file");
+      File configFile = SPIFFS.open("/config.json", "r");
+      if (configFile) {
+        Serial.println("opened config file");
+        size_t size = configFile.size();
+        // Allocate a buffer to store contents of the file.
+        std::unique_ptr<char[]> buf(new char[size]);
+
+        configFile.readBytes(buf.get(), size);
+        DynamicJsonDocument doc(1024);
+
+        deserializeJson(doc,buf.get());
+        serializeJson(doc,Serial);
+
+        if (!doc.isNull()) {
+          Serial.println("\nparsed json");
+        
+          utc_offset = atoi(doc["utc_offset"]);
+          utc_dst_offset = atoi(doc["utc_dst_offset"]);
+
+        } else {
+          Serial.println("failed to load json config");
+        }
+      }
+    }
+  } else {
+    Serial.println("failed to mount FS");
+  }
+  //end read
+}
+
 void setup()
 {
     Serial.begin(115200);
     delay(500);
+
+    if (SPEAKER_OUT > 0) {
+        ledcSetup(CHANNEL_0, 1000, 8);
+        ledcAttachPin(SPEAKER_OUT, CHANNEL_0);
+        int i = 3;
+        while (i--) {
+            ledcWriteTone(CHANNEL_0, 1000);
+            delay(20);
+            ledcWriteTone(CHANNEL_0, 0);
+            delay(100);
+        }
+    }
+
+    button_init();
+
+    setupSpiffs();
+
+    setupWifi();
+
+    setupNTP();
 
 #ifdef ENABLE_IP5306
     Wire.begin(I2C_SDA, I2C_SCL);
@@ -682,39 +753,8 @@ void setup()
     digitalWrite(AMP_POWER_CTRL, HIGH);
 #endif
 
-#ifdef DAC_MAX98357
-    AudioGeneratorMP3 *mp3;
-    AudioFileSourcePROGMEM *file;
-    AudioOutputI2S *out;
-    AudioFileSourceID3 *id3;
 
-    file = new AudioFileSourcePROGMEM(image, sizeof(image));
-    id3 = new AudioFileSourceID3(file);
-    out = new AudioOutputI2S();
-    out->SetPinout(IIS_BCK, IIS_WS, IIS_DOUT);
-    mp3 = new AudioGeneratorMP3();
-    mp3->begin(id3, out);
-    while (1) {
-        if (mp3->isRunning()) {
-            if (!mp3->loop())
-                mp3->stop();
-        } else {
-            Serial.printf("MP3 done\n");
-            break;
-        }
-    }
-#endif
 
-    if (SPEAKER_OUT > 0) {
-        ledcSetup(CHANNEL_0, 1000, 8);
-        ledcAttachPin(SPEAKER_OUT, CHANNEL_0);
-        int i = 3;
-        while (i--) {
-            ledcWriteTone(CHANNEL_0, 1000);
-            delay(200);
-            ledcWriteTone(CHANNEL_0, 0);
-        }
-    }
     SPI.begin(SPI_CLK, SPI_MISO, SPI_MOSI, -1);
     if (!FILESYSTEM.begin()) {
         Serial.println("FILESYSTEM is not database");
@@ -723,20 +763,54 @@ void setup()
             delay(1000);
         }
     }
-    if (!loadBadgeInfo(&info)) {
-        loadDefaultInfo();
-    }
+
 
     if (esp_sleep_get_wakeup_cause() == ESP_SLEEP_WAKEUP_UNDEFINED) {
-        showMianPage();
+        // showMianPage();
     }
 
-    WebServerStart();
 
-    button_init();
 }
 
 void loop()
 {
-    button_loop();
+
+    // while(!timeClient.update()) {
+    //     timeClient.forceUpdate();
+    // }
+    
+    long utc_offset_sec = utc_offset*30*60;
+    long utc_dst_offset_sec = utc_dst_offset*30*60;
+    int utc_dst_offset_offset_sec = utc_dst_offset_sec-utc_offset_sec;
+
+    const char *ntpServer = "pool.ntp.org";
+
+    configTime(utc_offset_sec,utc_dst_offset_offset_sec,ntpServer);
+
+
+    displayInit();
+    display.fillScreen(GxEPD_WHITE);
+    displayText("tenpo ni li:", 10, LEFT_ALIGNMENT);
+
+    struct tm timeinfo;
+    if(!getLocalTime(&timeinfo)){
+        Serial.println("Failed to obtain time");
+    }
+    
+    String time_string = String(timeinfo.tm_hour)+String(":")+String(timeinfo.tm_min);
+    Serial.print(time_string);
+
+    displayText(time_string, 30, RIGHT_ALIGNMENT);
+    displayText(String(utc_offset_sec)+" / DST "+String(utc_dst_offset_offset_sec), 110, LEFT_ALIGNMENT);
+
+    const char* tz = getenv("TZ");
+
+    displayText(String(tz), 150, LEFT_ALIGNMENT);
+
+    displayText(String("Is DST? ")+String(timeinfo.tm_isdst), 190, LEFT_ALIGNMENT);
+
+    DISPLAY_UPDATE();
+
+    
+    delay(120000);
 }
