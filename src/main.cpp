@@ -25,6 +25,7 @@
 
 #include <time.h>
 
+#include "timezones.h"
 //#define DEFALUT_FONT  FreeMono9pt7b
 // #define DEFALUT_FONT  FreeMonoBoldOblique9pt7b
 // #define DEFALUT_FONT FreeMonoBold9pt7b
@@ -37,9 +38,6 @@
 // #define DEFALUT_FONT FreeSerifBold9pt7b
 // #define DEFALUT_FONT FreeSerifBoldItalic9pt7b
 // #define DEFALUT_FONT FreeSerifItalic9pt7b
-
-#define EPROM_UTC_OFFSET_SLOT 0
-#define EPROM_UTC_DST_OFFSET_SLOT 1
 
 const GFXfont *fonts[] = {
     &FreeMono9pt7b,
@@ -64,7 +62,6 @@ const GFXfont *fonts[] = {
 #include "SPI.h"
 #include <SPIFFS.h>
 #include <FS.h>
-#include <ArduinoJson.h>
 #include "esp_wifi.h"
 #include "Esp.h"
 #include "board_def.h"
@@ -96,8 +93,7 @@ void displayInit(void);
 void drawBitmap(const char *filename, int16_t x, int16_t y, bool with_color);
 
 
-int utc_offset=0;
-int utc_dst_offset=0;
+String timezone_name("Etc/UCT");
 
 typedef enum {
     RIGHT_ALIGNMENT = 0,
@@ -500,17 +496,13 @@ String getParam(String name){
 
 WiFiManagerParameter custom_field;
 
-char utc_offset_cstr[5];
-char utc_dst_offset_cstr[5];
 
 void saveParams(){
 
 
     Serial.println("not dirty; saving config");
     DynamicJsonDocument doc(1024);
-    doc["utc_offset"] = itoa(utc_offset,utc_offset_cstr,10);
-    doc["utc_dst_offset"] = itoa(utc_dst_offset,utc_dst_offset_cstr,10);
-
+    doc["timezone"] = timezone_name;
 
     File configFile = SPIFFS.open("/config.json", "w");
     if (!configFile) {
@@ -526,12 +518,10 @@ void saveParams(){
 void saveParamCallback(){
   Serial.println("[CALLBACK] saveParamCallback fired");
   
-  int utc_offset_new = atoi(getParam("utc_offset").c_str());
-  int utc_dst_offset_new = atoi(getParam("utc_dst_offset").c_str());
+  String new_timezone_name = getParam("timezone");
 
-    if (utc_offset_new!=utc_offset ||utc_dst_offset_new!=utc_dst_offset ){
-        utc_offset = utc_offset_new;
-        utc_dst_offset = utc_dst_offset_new;
+    if (new_timezone_name!=timezone_name ){
+        timezone_name = new_timezone_name;
 
         saveParams();
     }
@@ -544,59 +534,6 @@ String format_time(int houroffset,int halfhouroffset){
     return sign+hour+":"+   String(halfhouroffset==0?"00":"30");
 }
 
-String genTimeZoneDropdown(int selected){
-    String dropdownwifi=String("");
-
-    for (int hoursoffset=-23;hoursoffset<=23;hoursoffset++){
-        if (hoursoffset<0){
-            {
-                int index = hoursoffset*2-1;
-                String offset_str = format_time(hoursoffset,-1);
-                String selected_str = index==selected ? " selected " : "";
-                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
-            }
-            {
-                int index = hoursoffset*2;
-                String selected_str = index==selected ? " selected " : "";
-                String offset_str = format_time(hoursoffset,0);
-                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
-            }
-        } else if (hoursoffset==0){
-            {
-                int index = hoursoffset*2-1;
-                String selected_str = index==selected ? " selected " : "";
-                String offset_str = format_time(hoursoffset,-1);
-                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
-            }
-            {
-                int index = hoursoffset*2;
-                String selected_str = index==selected ? " selected " : "";
-                String offset_str = format_time(hoursoffset,0);
-                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
-            }
-            {
-                int index = hoursoffset*2+1;
-                String selected_str = index==selected ? " selected " : "";
-                String offset_str = format_time(hoursoffset,-1);
-                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
-            }
-        } else {//if hoursoffset>0
-            {
-                int index = hoursoffset*2;
-                String selected_str = index==selected ? " selected " : "";
-                String offset_str = format_time(hoursoffset,0);
-                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
-            }
-            {
-                int index = hoursoffset*2+1;
-                String selected_str = index==selected ? " selected " : "";
-                String offset_str = format_time(hoursoffset,-1);
-                dropdownwifi  += String("<option value='")+String(index)+String("'")+selected_str+String(">")+offset_str+String("</option>");
-            }
-        }
-    }
-    return dropdownwifi;
-}
 
 
 void webServerCallback(){
@@ -606,16 +543,20 @@ void webServerCallback(){
 
 void setupWifi(){
 
+    String dropdownwifi = String ("<br/><label for='timezone'>Timezone:</label></p><select id='timezone' name='timezone'>");
 
-// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-    String dropdownwifi = String ("<br/><h3>Timezones</h3><br/> (<a href='/timezones.html'>table of values here</a>)<br/><label for='utc_offset'>Timezone UTC offset ±hh:mm:</label></p><select id='utc_offset' name='utc_offset'>");
-    dropdownwifi += genTimeZoneDropdown(utc_offset);
+    int timezonecount=sizeof(timezones) / sizeof(timezones[0]);
+    for( int i = 0; i < timezonecount; i+=2)
+    {
+      String zone_name=String(timezones[i]);
+
+      //const char* zone_data=timezones[i+1];
+
+      String selected_str = (zone_name == timezone_name) ? String(" selected "):String("");
+      dropdownwifi+=String("<option value='")+zone_name+String("'")+selected_str+String(">")+zone_name+String("</option>");
+    }
     dropdownwifi += String("</select>");
 
-    dropdownwifi += String("<br/><br/><label for='utc_dst_offset'>Timezone Daylight Saving Times UTC offset ±hh:mm:</label></p><select id='utc_dst_offset' name='utc_dst_offset'>");
-    dropdownwifi += genTimeZoneDropdown(utc_dst_offset);
-    dropdownwifi += String("</select>");
-    Serial.println("Aasd1");
     new (&custom_field) WiFiManagerParameter(dropdownwifi.c_str()); // custom html input
     wifiManager.setWebServerCallback(webServerCallback);
     wifiManager.addParameter(&custom_field);
@@ -701,10 +642,8 @@ void setupSpiffs(){
 
         if (!doc.isNull()) {
           Serial.println("\nparsed json");
-        
-          utc_offset = atoi(doc["utc_offset"]);
-          utc_dst_offset = atoi(doc["utc_dst_offset"]);
-
+          const char* timezone_cstr = doc["timezone"];
+          timezone_name = String(timezone_cstr);
         } else {
           Serial.println("failed to load json config");
         }
@@ -779,13 +718,19 @@ void loop()
     //     timeClient.forceUpdate();
     // }
     
-    long utc_offset_sec = utc_offset*30*60;
-    long utc_dst_offset_sec = utc_dst_offset*30*60;
-    int utc_dst_offset_offset_sec = utc_dst_offset_sec-utc_offset_sec;
 
     const char *ntpServer = "pool.ntp.org";
+    String timezonespecs("UTC0");
+    int timezonecount=sizeof(timezones) / sizeof(timezones[0]);
+    for( int i = 0; i < timezonecount; i+=2)
+    {
+      String zone_name=String(timezones[i]);
+        if (zone_name == timezone_name){
+            timezonespecs=String(timezones[i+1]);
+        }
+    }
 
-    configTime(utc_offset_sec,utc_dst_offset_offset_sec,ntpServer);
+    configTzTime(timezonespecs.c_str(),ntpServer);
 
 
     displayInit();
@@ -801,16 +746,19 @@ void loop()
     Serial.print(time_string);
 
     displayText(time_string, 30, RIGHT_ALIGNMENT);
-    displayText(String(utc_offset_sec)+" / DST "+String(utc_dst_offset_offset_sec), 110, LEFT_ALIGNMENT);
+    displayText(timezone_name, 110, LEFT_ALIGNMENT);
 
     const char* tz = getenv("TZ");
 
-    displayText(String(tz), 150, LEFT_ALIGNMENT);
+    displayText(String(tz), 170, LEFT_ALIGNMENT);
 
-    displayText(String("Is DST? ")+String(timeinfo.tm_isdst), 190, LEFT_ALIGNMENT);
+    displayText(String("Is DST? ")+String(timeinfo.tm_isdst), 210, LEFT_ALIGNMENT);
 
     DISPLAY_UPDATE();
 
-    
-    delay(120000);
+    #define factor 1000000
+    #define sleep_time 120
+    // delay(120000);
+
+    esp_deep_sleep (sleep_time * factor);
 }
