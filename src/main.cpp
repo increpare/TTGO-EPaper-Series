@@ -1,7 +1,8 @@
 #define DISPLAY_UPDATE(x) display.update(x)
-#define ERASE_DISPLAY(x) display.eraseDisplay(x);
+// #define ERASE_DISPLAY(x) display.eraseDisplay(x);
 // #define DISPLAY_UPDATE(x) 
-// #define ERASE_DISPLAY(x)
+#define ERASE_DISPLAY(x)
+
 
 #include <FS.h>          // this needs to be first, or it all crashes and burns...
 
@@ -9,6 +10,9 @@
 #include <GxEPD.h>
 #include <GxIO/GxIO_SPI/GxIO_SPI.h>
 #include <GxIO/GxIO.h>
+
+#include "driver/adc.h"
+#include "esp_adc_cal.h"
 
 #include <Fonts/FreeMono9pt7b.h>
 #include <Fonts/FreeMonoBoldOblique9pt7b.h>
@@ -92,6 +96,14 @@ WiFiManager wifiManager;
 void displayInit(void);
 void drawBitmap(const char *filename, int16_t x, int16_t y, bool with_color);
 
+const char* IMG_CAST[] = {
+    "/suno_open.bmp",
+    "/suno_awen.bmp",
+    "/suno_pini.bmp",
+    "/pimeja_open.bmp",
+    "/pimeja_awen.bmp",
+    "/pimeja_pini.bmp",
+};
 
 String timezone_name("Etc/UCT");
 
@@ -354,45 +366,45 @@ void drawBitmap(const char *filename, int16_t x, int16_t y, bool with_color)
                         in_idx = 0;
                     }
                     switch (depth) {
-                    case 24:
-                        blue = input_buffer[in_idx++];
-                        green = input_buffer[in_idx++];
-                        red = input_buffer[in_idx++];
-                        whitish = with_color ? ((red > 0x80) && (green > 0x80) && (blue > 0x80)) : ((red + green + blue) > 3 * 0x80); // whitish
-                        colored = (red > 0xF0) || ((green > 0xF0) && (blue > 0xF0));                                                  // reddish or yellowish?
+                        case 24:
+                            blue = input_buffer[in_idx++];
+                            green = input_buffer[in_idx++];
+                            red = input_buffer[in_idx++];
+                            whitish = with_color ? ((red > 0x80) && (green > 0x80) && (blue > 0x80)) : ((red + green + blue) > 3 * 0x80); // whitish
+                            colored = (red > 0xF0) || ((green > 0xF0) && (blue > 0xF0));                                                  // reddish or yellowish?
+                            break;
+                        case 16: {
+                            uint8_t lsb = input_buffer[in_idx++];
+                            uint8_t msb = input_buffer[in_idx++];
+                            if (format == 0) {
+                                // 555
+                                blue = (lsb & 0x1F) << 3;
+                                green = ((msb & 0x03) << 6) | ((lsb & 0xE0) >> 2);
+                                red = (msb & 0x7C) << 1;
+                            } else {
+                                // 565
+                                blue = (lsb & 0x1F) << 3;
+                                green = ((msb & 0x07) << 5) | ((lsb & 0xE0) >> 3);
+                                red = (msb & 0xF8);
+                            }
+                            whitish = with_color ? ((red > 0x80) && (green > 0x80) && (blue > 0x80)) : ((red + green + blue) > 3 * 0x80); // whitish
+                            colored = (red > 0xF0) || ((green > 0xF0) && (blue > 0xF0));                                                  // reddish or yellowish?
+                        }
                         break;
-                    case 16: {
-                        uint8_t lsb = input_buffer[in_idx++];
-                        uint8_t msb = input_buffer[in_idx++];
-                        if (format == 0) {
-                            // 555
-                            blue = (lsb & 0x1F) << 3;
-                            green = ((msb & 0x03) << 6) | ((lsb & 0xE0) >> 2);
-                            red = (msb & 0x7C) << 1;
-                        } else {
-                            // 565
-                            blue = (lsb & 0x1F) << 3;
-                            green = ((msb & 0x07) << 5) | ((lsb & 0xE0) >> 3);
-                            red = (msb & 0xF8);
+                        case 1:
+                        case 4:
+                        case 8: {
+                            if (0 == in_bits) {
+                                in_byte = input_buffer[in_idx++];
+                                in_bits = 8;
+                            }
+                            uint16_t pn = (in_byte >> bitshift) & bitmask;
+                            whitish = mono_palette_buffer[pn / 8] & (0x1 << pn % 8);
+                            colored = color_palette_buffer[pn / 8] & (0x1 << pn % 8);
+                            in_byte <<= depth;
+                            in_bits -= depth;
                         }
-                        whitish = with_color ? ((red > 0x80) && (green > 0x80) && (blue > 0x80)) : ((red + green + blue) > 3 * 0x80); // whitish
-                        colored = (red > 0xF0) || ((green > 0xF0) && (blue > 0xF0));                                                  // reddish or yellowish?
-                    }
-                    break;
-                    case 1:
-                    case 4:
-                    case 8: {
-                        if (0 == in_bits) {
-                            in_byte = input_buffer[in_idx++];
-                            in_bits = 8;
-                        }
-                        uint16_t pn = (in_byte >> bitshift) & bitmask;
-                        whitish = mono_palette_buffer[pn / 8] & (0x1 << pn % 8);
-                        colored = color_palette_buffer[pn / 8] & (0x1 << pn % 8);
-                        in_byte <<= depth;
-                        in_bits -= depth;
-                    }
-                    break;
+                        break;
                     }
                     if (whitish) {
                         color = GxEPD_WHITE;
@@ -542,7 +554,7 @@ void webServerCallback(){
 
 
 void setupWifi(){
-
+    esp_wifi_start();
     String dropdownwifi = String ("<br/><label for='timezone'>Timezone:</label></p><select id='timezone' name='timezone'>");
 
     int timezonecount=sizeof(timezones) / sizeof(timezones[0]);
@@ -564,7 +576,7 @@ void setupWifi(){
     Serial.println("Aasd2");
     
     wifiManager.setAPCallback(configModeCallback);
-
+    wifiManager.setTimeout(300);
     Serial.println("Aasd3");
 
     button_loop();
@@ -603,17 +615,10 @@ void setupWifi(){
 
 }
 
-#include <NTPClient.h>
 
 
-WiFiUDP ntpUDP;
-// NTPClient timeClient(ntpUDP);
-// String timezone;
 
-void setupNTP(){
-    
-    // timeClient.begin();
-}
+
 
 void setupSpiffs(){
   //clean FS, for testing
@@ -655,6 +660,36 @@ void setupSpiffs(){
   //end read
 }
 
+int time_of_day = 0;
+
+inline double ms_to_minutes(long int i){
+    return i/(1000.0*60.0);
+}
+
+inline String wakeupReason(){
+	esp_sleep_wakeup_cause_t wakeup_reason;
+	wakeup_reason = esp_sleep_get_wakeup_cause();
+	switch(wakeup_reason)
+	{
+		case 1  : return String("Wakeup caused by external signal using RTC_IO"); break;
+		case 2  : return String("Wakeup caused by external signal using RTC_CNTL"); break;
+		case 3  : return String("Wakeup caused by timer"); break;
+		case 4  : return String("Wakeup caused by touchpad"); break;
+		case 5  : return String("Wakeup caused by ULP program"); break;
+		default : return String("Wakeup was not caused by deep sleep"); break;
+	}
+
+}
+
+double voltage(){
+  esp_adc_cal_characteristics_t adc_chars;
+  esp_adc_cal_value_t val_type = esp_adc_cal_characterize((adc_unit_t)ADC_UNIT_1, (adc_atten_t)ADC_ATTEN_DB_2_5, (adc_bits_width_t)ADC_WIDTH_BIT_12, 1100, &adc_chars);
+  float measurement = (float) analogRead(35);
+  float battery_voltage = (measurement / 4095.0) * 7.05;
+  return battery_voltage;
+}
+
+
 void setup()
 {
     Serial.begin(115200);
@@ -678,7 +713,7 @@ void setup()
 
     setupWifi();
 
-    setupNTP();
+
 
 #ifdef ENABLE_IP5306
     Wire.begin(I2C_SDA, I2C_SCL);
@@ -709,11 +744,6 @@ void setup()
     }
 
 
-}
-
-void loop()
-{
-
     // while(!timeClient.update()) {
     //     timeClient.forceUpdate();
     // }
@@ -733,32 +763,89 @@ void loop()
     configTzTime(timezonespecs.c_str(),ntpServer);
 
 
-    displayInit();
-    display.fillScreen(GxEPD_WHITE);
-    displayText("tenpo ni li:", 10, LEFT_ALIGNMENT);
-
     struct tm timeinfo;
     if(!getLocalTime(&timeinfo)){
         Serial.println("Failed to obtain time");
     }
+
+    long milliseconds_since_midnight = ((timeinfo.tm_hour*60+timeinfo.tm_min)*60+timeinfo.tm_sec)*1000;  
+
     
+    //time since 6am
+
+    const long milliseconds_in_hour = ( long)60*60*1000;
+    const long milliseconds_in_day = ( long)24*milliseconds_in_hour;
+
+    long milliseconds_since_6am = ( long)(milliseconds_since_midnight+(18*milliseconds_in_hour))%milliseconds_in_day;
+    
+    const long milliseconds_in_window = (long)milliseconds_in_hour*4;
+
+    
+//five minutes into the future
+    long pretendoffset_ms = 5*60*1000;
+
+    long time_of_day_index = ((milliseconds_since_6am+pretendoffset_ms)/milliseconds_in_window)%6;
+    time_of_day = time_of_day_index;
+    
+    displayInit();
+    display.fillScreen(GxEPD_WHITE);
+
+
+    // displayText("tenpo ni li:", 10, LEFT_ALIGNMENT);
+
     String time_string = String(timeinfo.tm_hour)+String(":")+String(timeinfo.tm_min);
     Serial.print(time_string);
 
-    displayText(time_string, 30, RIGHT_ALIGNMENT);
-    displayText(timezone_name, 110, LEFT_ALIGNMENT);
 
-    const char* tz = getenv("TZ");
+    // displayText(timezone_name, 110, LEFT_ALIGNMENT);
 
-    displayText(String(tz), 170, LEFT_ALIGNMENT);
+    // const char* tz = getenv("TZ");
 
-    displayText(String("Is DST? ")+String(timeinfo.tm_isdst), 210, LEFT_ALIGNMENT);
+    // displayText(String(tz), 170, LEFT_ALIGNMENT);
 
-    DISPLAY_UPDATE();
+    // displayText(String("Is DST? ")+String(timeinfo.tm_isdst), 210, LEFT_ALIGNMENT);
 
-    #define factor 1000000
-    #define sleep_time 120
+    // Serial.println("time of day:");
+    // Serial.println(time_of_day);
+
+
     // delay(120000);
 
-    esp_deep_sleep (sleep_time * factor);
+
+    long ms_current_window_started = milliseconds_in_window*time_of_day_index;
+    long ms_into_current_window = (long)milliseconds_since_6am-ms_current_window_started;
+    
+    long ms_remaining_in_current_window = (long)milliseconds_in_window - ms_into_current_window;
+
+    //tenpo suno open = index 0 is 6am = 6 hours = 6*60 mins = 6*60*60 seconds = 6*60*60*1000 miliseconds
+
+    drawBitmap(IMG_CAST[time_of_day],0,150+(296-275)/2, true);
+
+    displayText(time_string, 15, LEFT_ALIGNMENT);
+    displayText(String(time_of_day_index), 15, RIGHT_ALIGNMENT);
+    displayText(String(ms_to_minutes(ms_into_current_window)), 30, LEFT_ALIGNMENT);
+    displayText(String(ms_to_minutes(ms_remaining_in_current_window)), 50, LEFT_ALIGNMENT);
+    displayText(String((unsigned long)(ms_remaining_in_current_window*1000)), 70, LEFT_ALIGNMENT);
+
+    uint16_t battery_voltage = voltage();
+    displayText(String(battery_voltage)+String("V"), 90, LEFT_ALIGNMENT);
+    
+    displayText(wakeupReason(),110,LEFT_ALIGNMENT);
+        
+    DISPLAY_UPDATE();
+    esp_wifi_stop();
+    WiFi.disconnect();
+  	WiFi.mode(WIFI_OFF);
+    
+    //https://www.reddit.com/r/esp32/comments/idinjr/36ma_deep_sleep_in_an_eink_ttgo_t5_v23/
+    pinMode(13, OUTPUT);
+    digitalWrite(13, HIGH);
+    gpio_deep_sleep_hold_en();
+    display.powerDown();
+    esp_deep_sleep ((unsigned long)ms_remaining_in_current_window*1000);
+}
+
+
+void loop(){
+    Serial.println("shouldn't get here eep");
 }

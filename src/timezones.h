@@ -1,4 +1,4 @@
-const char* timezones = {"Africa/Abidjan","GMT0",
+const char* timezones[] = {"Africa/Abidjan","GMT0",
 "Africa/Accra","GMT0",
 "Africa/Addis_Ababa","EAT-3",
 "Africa/Algiers","CET-1",
