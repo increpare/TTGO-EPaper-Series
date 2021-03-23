@@ -13,6 +13,7 @@
 
 #include "driver/adc.h"
 #include "esp_adc_cal.h"
+#include "esp_sleep.h"
 
 #include <Fonts/FreeMono9pt7b.h>
 #include <Fonts/FreeMonoBoldOblique9pt7b.h>
@@ -671,24 +672,38 @@ inline String wakeupReason(){
 	wakeup_reason = esp_sleep_get_wakeup_cause();
 	switch(wakeup_reason)
 	{
-		case 1  : return String("Wakeup caused by external signal using RTC_IO"); break;
-		case 2  : return String("Wakeup caused by external signal using RTC_CNTL"); break;
-		case 3  : return String("Wakeup caused by timer"); break;
-		case 4  : return String("Wakeup caused by touchpad"); break;
-		case 5  : return String("Wakeup caused by ULP program"); break;
-		default : return String("Wakeup was not caused by deep sleep"); break;
+    case ESP_SLEEP_WAKEUP_EXT0 : return String("Wakeup caused by external signal using RTC_IO"); break;
+    case ESP_SLEEP_WAKEUP_EXT1 : return String("Wakeup caused by external signal using RTC_CNTL"); break;
+    case ESP_SLEEP_WAKEUP_TIMER : return String("Wakeup caused by timer"); break;
+    case ESP_SLEEP_WAKEUP_TOUCHPAD : return String("Wakeup caused by touchpad"); break;
+    case ESP_SLEEP_WAKEUP_ULP : return String("Wakeup caused by ULP program"); break;
+    default : return String("Wakeup was not caused by deep sleep: ")+String(wakeup_reason); break;
 	}
 
 }
 
+int vref = 1100;
+
 double voltage(){
-  esp_adc_cal_characteristics_t adc_chars;
-  esp_adc_cal_value_t val_type = esp_adc_cal_characterize((adc_unit_t)ADC_UNIT_1, (adc_atten_t)ADC_ATTEN_DB_2_5, (adc_bits_width_t)ADC_WIDTH_BIT_12, 1100, &adc_chars);
-  float measurement = (float) analogRead(35);
-  float battery_voltage = (measurement / 4095.0) * 7.05;
+  uint16_t v = analogRead(35);
+  float battery_voltage = ((float)v / 4095.0) * 2.0 * 3.3 * (vref / 1000.0);
   return battery_voltage;
 }
 
+
+void setupBatteryMonitor(){
+    esp_adc_cal_characteristics_t adc_chars;
+    esp_adc_cal_value_t val_type = esp_adc_cal_characterize((adc_unit_t)ADC_UNIT_1, (adc_atten_t)ADC1_CHANNEL_6, (adc_bits_width_t)ADC_WIDTH_BIT_12, 1100, &adc_chars);
+    //Check type of calibration value used to characterize ADC
+    if (val_type == ESP_ADC_CAL_VAL_EFUSE_VREF) {
+        Serial.printf("eFuse Vref:%u mV", adc_chars.vref);
+        vref = adc_chars.vref;
+    } else if (val_type == ESP_ADC_CAL_VAL_EFUSE_TP) {
+        Serial.printf("Two Point --> coeff_a:%umV coeff_b:%umV\n", adc_chars.coeff_a, adc_chars.coeff_b);
+    } else {
+        Serial.println("Default Vref: 1100mV");
+    }
+}
 
 void setup()
 {
@@ -713,7 +728,7 @@ void setup()
 
     setupWifi();
 
-
+    setupBatteryMonitor();
 
 #ifdef ENABLE_IP5306
     Wire.begin(I2C_SDA, I2C_SCL);
@@ -837,12 +852,21 @@ void setup()
     WiFi.disconnect();
   	WiFi.mode(WIFI_OFF);
     
+    esp_sleep_disable_wakeup_source(ESP_SLEEP_WAKEUP_TOUCHPAD);
     //https://www.reddit.com/r/esp32/comments/idinjr/36ma_deep_sleep_in_an_eink_ttgo_t5_v23/
     pinMode(13, OUTPUT);
     digitalWrite(13, HIGH);
     gpio_deep_sleep_hold_en();
     display.powerDown();
-    esp_deep_sleep ((unsigned long)ms_remaining_in_current_window*1000);
+    esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_SLOW_MEM, ESP_PD_OPTION_OFF);
+    esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_FAST_MEM, ESP_PD_OPTION_OFF);
+    esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_OFF);
+
+    //wait shouldn't i need the crystal?
+    //https://github.com/xtrinch/sensor-dashboard-oled-display/blob/d288c83eac39c49a7fea936692c869c779b54aab/src/sleep.cpp
+    //  esp_sleep_pd_config(ESP_PD_DOMAIN_XTAL, ESP_PD_OPTION_OFF);
+
+    esp_deep_sleep (((uint64_t)ms_remaining_in_current_window)*((uint64_t)1000));
 }
 
 
